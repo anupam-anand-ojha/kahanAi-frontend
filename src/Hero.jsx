@@ -4,7 +4,7 @@ function Hero() {
       id="home"
       className="relative min-h-[85vh] overflow-hidden bg-base-100 text-base-content"
     >
-       {/* Background atmosphere */}
+      {/* Background atmosphere */}
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=90"
@@ -45,9 +45,9 @@ function Hero() {
             </h1>
 
             <p className="mt-8 max-w-lg text-base leading-8 opacity-65 sm:text-lg">
-              A world where stories don't follow paths — they follow
-              you. Pick a universe, invent a possibility, and watch
-              your imagination become a tale of its own.
+              A world where stories don't follow paths — they follow you. Pick a
+              universe, invent a possibility, and watch your imagination become
+              a tale of its own.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -88,9 +88,7 @@ function Hero() {
                 </span>
                 <span className="mt-4 font-serif text-5xl italic">Once</span>
                 <span className="mt-1 font-serif text-3xl">upon a...</span>
-                <span className="mt-4 text-xs opacity-40">
-                  YOU DECIDE
-                </span>
+                <span className="mt-4 text-xs opacity-40">YOU DECIDE</span>
               </div>
 
               <span className="absolute left-0 top-1/2 font-mono text-[10px] tracking-widest opacity-40">
@@ -107,49 +105,170 @@ function Hero() {
             </div>
           </div>
         </div>
+        
+        {/* Story Portal Selection */}
+        <section id="zones" className="border-t border-base-content/10 pt-10">
+          <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <div className="badge badge-secondary badge-outline mb-4">
+                FIND YOUR UNIVERSE
+              </div>
 
-        {/* Zone preview strip */}
-        <div
-          id="zones"
-          className="border-t border-base-content/15 pt-6"
-        >
-          <div className="mb-5 flex items-center justify-between">
-            <p className="text-xs uppercase tracking-[0.25em] opacity-60">
-              Choose your narrative universe
+              <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
+                Choose your
+                <span className="block font-serif font-normal italic text-secondary">
+                  narrative
+                </span>
+              </h2>
+            </div>
+
+            <p className="max-w-xs text-sm leading-6 opacity-60">
+              Every zone opens the door to a different reality.
             </p>
-            <span className="font-mono text-xs opacity-40">01 — 04</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { number: "01", name: "FANTASY", symbol: "✳" },
-              { number: "02", name: "HORROR", symbol: "☾" },
-              { number: "03", name: "SCI-FI", symbol: "⌘" },
-              { number: "04", name: "ADVENTURE", symbol: "✧" },
+              {
+                id: "01",
+                name: "Fantasy",
+                genre: "FANTASY REALM",
+                symbol: "✧",
+                phrase: "Beyond the impossible",
+                description:
+                  "Ancient magic, mythical creatures and kingdoms waiting to be discovered.",
+                theme: "text-violet-300",
+                border: "hover:border-violet-400/60",
+                glow: "bg-violet-500/15",
+                orb: "border-violet-300/30",
+                number: "text-violet-300/20",
+              },
+              {
+                id: "02",
+                name: "Horror",
+                genre: "HORROR REALM",
+                symbol: "☾",
+                phrase: "Dare to uncover",
+                description:
+                  "Dark secrets, unsettling mysteries and stories that haunt your imagination.",
+                theme: "text-rose-300",
+                border: "hover:border-rose-400/60",
+                glow: "bg-rose-500/15",
+                orb: "border-rose-300/30",
+                number: "text-rose-300/20",
+              },
+              {
+                id: "03",
+                name: "Sci-Fi",
+                genre: "SCI-FI REALM",
+                symbol: "⌘",
+                phrase: "Beyond tomorrow",
+                description:
+                  "Unknown galaxies, artificial intelligence and futures yet unwritten.",
+                theme: "text-cyan-300",
+                border: "hover:border-cyan-400/60",
+                glow: "bg-cyan-500/15",
+                orb: "border-cyan-300/30",
+                number: "text-cyan-300/20",
+              },
+              {
+                id: "04",
+                name: "Adventure",
+                genre: "ADVENTURE REALM",
+                symbol: "⟁",
+                phrase: "Into the unknown",
+                description:
+                  "Lost civilizations, daring quests and discoveries at every turn.",
+                theme: "text-amber-300",
+                border: "hover:border-amber-400/60",
+                glow: "bg-amber-500/15",
+                orb: "border-amber-300/30",
+                number: "text-amber-300/20",
+              },
             ].map((zone) => (
               <a
-                key={zone.number}
-                href={`#zone-${zone.number}`}
-                className="group border border-base-content/15 bg-base-200/40 p-4 transition-all duration-300 hover:border-secondary/60 hover:bg-secondary/10 sm:p-5"
+                key={zone.id}
+                href={`#zone-${zone.id}`}
+                className={`card group relative min-h-[360px] overflow-hidden border border-base-content/10 bg-base-200/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${zone.border}`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs opacity-40">
-                    {zone.number}
-                  </span>
-                  <span className="text-xl text-secondary transition-transform duration-300 group-hover:rotate-12">
-                    {zone.symbol}
-                  </span>
+                {/* Atmospheric glow */}
+                <div
+                  className={`pointer-events-none absolute -right-16 -top-12 h-56 w-56 rounded-full blur-[70px] transition-all duration-500 group-hover:scale-150 ${zone.glow}`}
+                />
+
+                {/* Oversized zone number */}
+                <div
+                  className={`pointer-events-none absolute -right-3 top-12 font-mono text-8xl font-black tracking-tighter opacity-70 transition-transform duration-500 group-hover:-translate-y-2 group-hover:translate-x-1 ${zone.number}`}
+                >
+                  {zone.id}
                 </div>
-                <p className="mt-5 text-sm font-bold tracking-wider">
-                  {zone.name}
-                </p>
-                <p className="mt-1 text-xs opacity-40">
-                  Enter universe ↗
-                </p>
+
+                <div className="card-body relative z-10 flex flex-1 flex-col p-6">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-mono text-[10px] tracking-[0.25em] opacity-50">
+                      PORTAL / {zone.id}
+                    </span>
+
+                    <span className={`badge badge-outline ${zone.theme}`}>
+                      {zone.genre}
+                    </span>
+                  </div>
+
+                  {/* Portal symbol */}
+                  <div className="flex flex-1 items-center justify-center py-8">
+                    <div
+                      className={`relative flex h-32 w-32 items-center justify-center rounded-full border ${zone.orb} transition-transform duration-700 group-hover:rotate-12 group-hover:scale-110`}
+                    >
+                      <div
+                        className={`absolute inset-3 rounded-full border border-dashed ${zone.orb}`}
+                      />
+
+                      <div
+                        className={`absolute inset-6 rounded-full border ${zone.orb}`}
+                      />
+
+                      <span className={`relative text-5xl ${zone.theme}`}>
+                        {zone.symbol}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p
+                      className={`mb-2 font-serif text-sm italic ${zone.theme}`}
+                    >
+                      {zone.phrase}
+                    </p>
+
+                    <h3 className="text-2xl font-black tracking-tight">
+                      {zone.name}
+                    </h3>
+
+                    <p className="mt-3 min-h-[80px] text-sm leading-6 opacity-60">
+                      {zone.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex items-center justify-between border-t border-base-content/10 pt-4">
+                    <span className="text-xs font-semibold uppercase tracking-wider">
+                      Enter this world
+                    </span>
+
+                    <span
+                      className={`btn btn-circle btn-sm btn-ghost transition-transform duration-300 group-hover:translate-x-1 ${zone.theme}`}
+                    >
+                      ↗
+                    </span>
+                  </div>
+                </div>
               </a>
             ))}
           </div>
-        </div>
+
+          <p className="mt-5 text-center font-mono text-[10px] tracking-[0.25em] opacity-40">
+            04 WORLDS / INFINITE STORIES
+          </p>
+        </section>
       </div>
     </section>
   );
