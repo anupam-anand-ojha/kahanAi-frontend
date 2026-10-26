@@ -5,16 +5,11 @@ function Hero() {
       id="home"
       className="relative min-h-[85vh] overflow-hidden bg-base-100 text-base-content"
     >
-       {/* Background atmosphere */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=90"
-          alt=""
-          className="h-full w-full object-cover opacity-35"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-base-100 via-base-100/80 to-base-100/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-transparent to-base-100/40" />
-      </div>
+      "{/* Editorial background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(139,92,246,0.12),transparent_55%)]" />
+        <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:48px_48px]" />
+      </div>"
 
       <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-12 lg:pt-24">
         {/* Top label */}
