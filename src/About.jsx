@@ -5,7 +5,7 @@ function About() {
     <section id="about" className="px-5 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Left: About introduction */}
+          {/* Left: About */}
           <div>
             <div className="badge badge-secondary badge-outline mb-5">
               THE MIND BEHIND THE MAGIC
