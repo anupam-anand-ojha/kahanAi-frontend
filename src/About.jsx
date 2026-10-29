@@ -59,7 +59,7 @@ function About() {
                 <h3 className="font-serif text-3xl italic md:text-4xl">
                   “Every mind holds
                   <span className="block text-secondary">
-                    a thousand worlds.”
+                    a thousand worlds....”
                   </span>
                 </h3>
 
