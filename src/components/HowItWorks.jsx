@@ -109,6 +109,7 @@ function HowItWorks() {
         </ul>
 
         {/* CTA */}
+        
         <div className="mt-12 text-center">
           <a href="#create" className="btn btn-secondary btn-lg">
             <span>✦</span>
