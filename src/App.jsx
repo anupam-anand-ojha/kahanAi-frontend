@@ -4,6 +4,7 @@ import Hero from './Hero'
 import About from './About'
 import MyStories from './Mystories'
 import HowItWorks from "./components/HowItWorks";
+import Footer from "./components/Footer";
 
 
 
@@ -17,6 +18,7 @@ function App() {
   <About/>
   <MyStories/>
   <HowItWorks/>
+  <Footer/>
 
 
 
