@@ -38,7 +38,7 @@ function Footer() {
             <div className="mt-7 flex gap-3">
 
               <a
-                href="https://github.com/"
+                href="https://github.com/anupam-anand-ojha"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -48,7 +48,7 @@ function Footer() {
               </a>
 
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/anupamanand-"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
