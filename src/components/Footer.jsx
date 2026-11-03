@@ -1,33 +1,48 @@
 
 function Footer() {
   return (
-    <footer className="border-t border-base-content/10 bg-base-200/30 px-5 pt-16 md:px-10">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#09090d] px-5 pt-20 text-[#eee8dc] md:px-10">
 
-      <div className="mx-auto max-w-6xl">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -top-40 right-10 h-80 w-80 rounded-full bg-amber-600/10 blur-[120px]" />
 
-        {/* Footer Main */}
-        <div className="grid gap-12 pb-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative mx-auto max-w-6xl">
+
+        {/* Main Footer */}
+        <div className="grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-4">
 
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="btn btn-ghost px-0 text-2xl font-black">
-              <span className="text-secondary">✦</span>
-              Kahan<span className="text-secondary">AI</span>
+
+            <a
+              href="#home"
+              className="btn btn-ghost -ml-4 text-3xl font-black hover:bg-white/5"
+            >
+              <span className="text-amber-400">✦</span>
+              Kahan<span className="text-amber-400">AI</span>
             </a>
 
-            <p className="mt-5 max-w-sm text-sm leading-7 opacity-60">
-              Every mind holds a thousand worlds.
-              Explore new universes, create unforgettable stories
-              and let your imagination go beyond boundaries.
+            <p className="mt-6 max-w-sm font-serif text-2xl italic leading-relaxed text-[#eee8dc]/80">
+              Every mind holds
+              <span className="block text-amber-400">
+                a thousand worlds.
+              </span>
             </p>
 
-            <div className="mt-6 flex gap-3">
+            <p className="mt-5 max-w-sm text-sm leading-7 text-[#eee8dc]/40">
+              Explore new universes, create unforgettable characters
+              and bring your imagination to life with KahanAI.
+            </p>
+
+            {/* Social Links */}
+            <div className="mt-7 flex gap-3">
+
               <a
                 href="https://github.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-circle btn-outline btn-sm border-base-content/20"
                 aria-label="GitHub"
+                className="btn btn-circle btn-outline btn-sm border-white/15 text-[#eee8dc] hover:border-amber-400 hover:bg-amber-400 hover:text-black"
               >
                 G
               </a>
@@ -36,61 +51,67 @@ function Footer() {
                 href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-circle btn-outline btn-sm border-base-content/20"
                 aria-label="LinkedIn"
+                className="btn btn-circle btn-outline btn-sm border-white/15 text-[#eee8dc] hover:border-amber-400 hover:bg-amber-400 hover:text-black"
               >
                 in
               </a>
+
             </div>
           </div>
 
-          {/* Explore */}
+          {/* Explore Links */}
           <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.2em]">
-              Explore
+            <h3 className="mb-6 font-mono text-xs tracking-[0.25em] text-amber-400">
+              EXPLORE
             </h3>
 
-            <ul className="menu menu-sm gap-2 p-0">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#zones">Story Worlds</a></li>
-              <li><a href="#create">Create Story</a></li>
-              <li><a href="#library">My Stories</a></li>
+            <ul className="menu menu-sm gap-3 p-0 text-[#eee8dc]/60">
+              <li><a href="#home" className="hover:text-amber-400">Home</a></li>
+              <li><a href="#zones" className="hover:text-amber-400">Story Worlds</a></li>
+              <li><a href="#create" className="hover:text-amber-400">Create Story</a></li>
+              <li><a href="#library" className="hover:text-amber-400">My Stories</a></li>
             </ul>
           </div>
 
-          {/* Discover */}
+          {/* Discover Links */}
           <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.2em]">
-              Discover
+            <h3 className="mb-6 font-mono text-xs tracking-[0.25em] text-amber-400">
+              DISCOVER
             </h3>
 
-            <ul className="menu menu-sm gap-2 p-0">
-              <li><a href="#about">About KahanAI</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#zones">Fantasy</a></li>
-              <li><a href="#zones">Adventure</a></li>
+            <ul className="menu menu-sm gap-3 p-0 text-[#eee8dc]/60">
+              <li><a href="#about" className="hover:text-amber-400">About KahanAI</a></li>
+              <li><a href="#how-it-works" className="hover:text-amber-400">How It Works</a></li>
+              <li><a href="#zones" className="hover:text-amber-400">Fantasy World</a></li>
+              <li><a href="#zones" className="hover:text-amber-400">Adventure World</a></li>
             </ul>
           </div>
 
         </div>
 
-        <div className="divider opacity-30"></div>
+        {/* Decorative Divider */}
+        <div className="divider before:bg-white/10 after:bg-white/10">
+          <span className="text-amber-400">✦</span>
+        </div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col items-center justify-between gap-4 py-6 text-center sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-5 py-7 text-center sm:flex-row">
 
-          <p className="text-xs opacity-50">
+          <p className="text-xs text-[#eee8dc]/40">
             © {new Date().getFullYear()} KahanAI. All rights reserved.
           </p>
 
-          <p className="text-xs opacity-50">
-            Crafted with <span className="text-secondary">✦</span> and imagination.
+          <p className="font-serif text-sm italic text-[#eee8dc]/50">
+            Crafted with <span className="text-amber-400">✦</span> and imagination.
           </p>
 
-          <a href="#home" className="btn btn-ghost btn-xs">
-            Back to top ↑
+          <a
+            href="#home"
+            className="btn btn-ghost btn-sm text-xs tracking-wider text-amber-400 hover:bg-amber-400/10"
+          >
+            BACK TO TOP ↑
           </a>
-
 
         </div>
 
