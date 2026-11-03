@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Hero from './Hero'
-import About from './About'
-import MyStories from './Mystories'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import MyStories from './pages/MyStories'
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 
