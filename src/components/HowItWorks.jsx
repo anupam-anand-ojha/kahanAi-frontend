@@ -118,6 +118,7 @@ function HowItWorks() {
           </a>
         </div>
 
+
       </div>
     </section>
   );
