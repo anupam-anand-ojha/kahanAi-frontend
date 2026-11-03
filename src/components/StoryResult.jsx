@@ -133,6 +133,7 @@ function StoryResult() {
           <p className="mt-12 font-mono text-[10px] tracking-[0.3em] text-white/25">
             KAHANAI — WHERE STORIES COME ALIVE
           </p>
+          
 
         </div>
       </section>
