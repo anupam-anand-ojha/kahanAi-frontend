@@ -1,3 +1,4 @@
+
 const stories = [
   {
     id: "01",
@@ -6,8 +7,6 @@ const stories = [
     symbol: "✧",
     description:
       "A fallen kingdom, a forgotten prophecy, and a power buried beneath the ashes.",
-    theme: "text-violet-300",
-    badge: "badge-secondary",
   },
   {
     id: "02",
@@ -16,8 +15,6 @@ const stories = [
     symbol: "☾",
     description:
       "Every night at 3 AM, someone knocks. The problem is, nobody lives upstairs.",
-    theme: "text-rose-300",
-    badge: "badge-error",
   },
   {
     id: "03",
@@ -26,107 +23,157 @@ const stories = [
     symbol: "⌘",
     description:
       "A message arrives from the future, carrying a warning no one can explain.",
-    theme: "text-cyan-300",
-    badge: "badge-info",
   },
 ];
 
-
 function MyStories() {
   return (
-    <section id="library" className="px-5 py-24 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+    <section
+      id="library"
+      className="relative overflow-hidden border-y border-white/10 bg-[#09090d] px-5 py-24 text-[#eee8dc] md:px-10"
+    >
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-amber-600/10 blur-[130px]" />
+
+      <div className="relative mx-auto max-w-6xl">
+
+        {/* Section Heading */}
+        <div className="mb-14 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
+
           <div>
-            <div className="badge badge-secondary badge-outline mb-4">
+            <div className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
               YOUR PERSONAL ARCHIVE
             </div>
 
-            <h2 className="text-4xl font-black tracking-tight md:text-6xl">
+            <h2 className="font-serif text-4xl font-bold tracking-tight md:text-6xl">
               The story
-              <span className="block font-serif font-normal italic text-secondary">
+              <span className="block font-normal italic text-amber-400">
                 vault.
               </span>
             </h2>
 
-            <p className="mt-4 max-w-lg text-sm leading-7 opacity-60">
-              Every world you imagine leaves a trace. Your next
-              favourite story might begin right here.
+            <p className="mt-5 max-w-lg text-sm leading-8 text-[#eee8dc]/50 md:text-base">
+              Every world you imagine leaves a trace.
+              Discover your creations and revisit the stories
+              that deserve to be remembered.
             </p>
           </div>
 
-          <a href="#create" className="btn btn-secondary">
-            <span>✦</span> New Story
+          <a
+            href="#create"
+            className="btn h-12 border-amber-400 bg-amber-400 px-6 text-black hover:border-amber-300 hover:bg-amber-300"
+          >
+            <span>✦</span>
+            New Story
+            <span>↗</span>
           </a>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {/* Story Cards */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
           {stories.map((story) => (
             <article
               key={story.id}
-              className="card border border-base-content/10 bg-base-200/40 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
+              className="card group overflow-hidden border border-white/10 bg-[#111016] transition-all duration-500 hover:-translate-y-2 hover:border-amber-400/40 hover:shadow-[0_20px_60px_rgba(180,120,35,0.08)]"
             >
-              <div className="card-body p-6">
+              <div className="card-body gap-5 p-6 md:p-7">
+
+                {/* Card Header */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs opacity-40">
+                  <span className="font-mono text-xs tracking-[0.2em] text-amber-400/60">
                     ARCHIVE / {story.id}
                   </span>
 
-                  <span className={`badge badge-outline ${story.theme}`}>
+                  <span className="badge badge-outline border-amber-400/30 text-amber-300">
                     {story.zone}
                   </span>
                 </div>
 
-                <div className="flex h-40 items-center justify-center overflow-hidden rounded-box border border-base-content/10 bg-base-300/50">
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full border border-base-content/15">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-base-content/20">
-                      <span className={`text-5xl ${story.theme}`}>
-                        {story.symbol}
-                      </span>
-                    </div>
+                {/* Story Artwork */}
+                <div className="relative flex h-52 items-center justify-center overflow-hidden rounded-box border border-amber-400/10 bg-gradient-to-br from-[#302019] via-[#19131a] to-[#09090d]">
+
+                  <div className="absolute h-44 w-44 rounded-full bg-amber-500/10 blur-3xl transition-all duration-700 group-hover:scale-150" />
+
+                  <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-amber-400/30 transition-transform duration-700 group-hover:rotate-12 group-hover:scale-110">
+
+                    <div className="absolute inset-3 rounded-full border border-dashed border-amber-400/30" />
+
+                    <div className="absolute inset-7 rounded-full border border-amber-400/20" />
+
+                    <span className="font-serif text-6xl text-amber-400">
+                      {story.symbol}
+                    </span>
                   </div>
+
+                  <span className="absolute bottom-4 font-mono text-[9px] tracking-[0.3em] text-amber-200/40">
+                    A WORLD OF ITS OWN
+                  </span>
                 </div>
 
-                <h3 className="mt-2 text-2xl font-bold tracking-tight">
-                  {story.title}
-                </h3>
+                {/* Story Information */}
+                <div>
+                  <h3 className="font-serif text-2xl font-bold leading-snug text-[#eee8dc] transition-colors group-hover:text-amber-300">
+                    {story.title}
+                  </h3>
 
-                <p className="min-h-20 text-sm leading-6 opacity-60">
-                  {story.description}
-                </p>
+                  <p className="mt-3 min-h-20 text-sm leading-7 text-[#eee8dc]/50">
+                    {story.description}
+                  </p>
+                </div>
 
-                <div className="card-actions mt-3 justify-between border-t border-base-content/10 pt-4">
-                  <span className="self-center text-xs opacity-40">
+                {/* Card Footer */}
+                <div className="card-actions mt-auto items-center justify-between border-t border-white/10 pt-5">
+
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/50">
                     STORY CONCEPT
                   </span>
 
                   <button
                     type="button"
-                    className="btn btn-ghost btn-sm text-secondary"
+                    className="btn btn-ghost btn-sm text-amber-400 hover:bg-amber-400/10"
                     onClick={() =>
                       document.getElementById("create")?.scrollIntoView({
                         behavior: "smooth",
                       })
                     }
                   >
-                    Create similar <span>↗</span>
+                    Create Similar <span>↗</span>
                   </button>
+
                 </div>
               </div>
             </article>
           ))}
+
         </div>
 
-        <div className="alert mt-8 border border-base-content/10 bg-base-200/30">
-          <span className="text-xl text-secondary">✦</span>
+        {/* Archive Notice */}
+        <div className="alert mt-10 border border-amber-400/15 bg-[#111016] text-[#eee8dc]">
+
+          <span className="text-2xl text-amber-400">✦</span>
+
           <div>
-            <h3 className="font-bold">Your archive starts here</h3>
-            <p className="text-sm opacity-60">
-              These are sample story concepts. Connect the backend to display
-              stories actually generated and saved by users.
+            <h3 className="font-serif text-lg font-bold">
+              Your archive begins here.
+            </h3>
+
+            <p className="mt-1 text-sm leading-6 text-[#eee8dc]/50">
+              These are sample story concepts. Connect your backend
+              to display and manage your actual AI-generated stories.
             </p>
           </div>
+
         </div>
+
+        {/* Bottom Decoration */}
+        <div className="mt-14 text-center">
+          <p className="font-serif text-xl italic text-[#eee8dc]/40">
+            Some stories are too special to be forgotten.
+          </p>
+          <div className="mt-5 text-amber-400">✦</div>
+        </div>
+
       </div>
     </section>
   );
