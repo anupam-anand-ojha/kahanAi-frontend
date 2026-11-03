@@ -1,11 +1,9 @@
 
 function StoryResult() {
-  // Temporary sample data.
-  // Later, replace this with your backend API response.
   const story = {
     title: "The Kingdom of Forgotten Souls",
     zone: "FANTASY REALM",
-    chapter: "CHAPTER ONE",
+    chapter: "CHAPTER I — THE AWAKENING",
     content: [
       "Beyond the mountains where sunlight had long forgotten to shine, there existed a kingdom hidden from the eyes of the living.",
       "Its towers touched the clouds, its rivers whispered ancient secrets, and its forests remembered every soul that had ever walked beneath their shadows.",
@@ -14,98 +12,131 @@ function StoryResult() {
   };
 
   return (
-    <main className="min-h-screen bg-base-100 px-5 py-16 md:px-10">
-      <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen bg-[#09090d] text-[#eee8dc]">
 
-        {/* Top Navigation */}
-        <div className="mb-12 flex items-center justify-between">
-          <a href="/" className="btn btn-ghost text-lg font-bold">
-            <span className="text-secondary">✦</span>
-            Kahan<span className="text-secondary">AI</span>
-          </a>
-
-          <a href="/" className="btn btn-outline btn-sm">
-            ← Back Home
+      {/* Navigation */}
+      <div className="navbar border-b border-white/10 px-5 md:px-12">
+        <div className="navbar-start">
+          <a href="/" className="btn btn-ghost text-xl font-black">
+            <span className="text-amber-400">✦</span>
+            Kahan<span className="text-amber-400">AI</span>
           </a>
         </div>
 
-        {/* Story Header */}
-        <div className="mb-12 text-center">
-          <div className="badge badge-secondary badge-outline mb-6">
+        <div className="navbar-end">
+          <a href="/#create" className="btn btn-outline btn-sm border-white/20">
+            Create New Story ↗
+          </a>
+        </div>
+      </div>
+
+      {/* Cinematic Cover */}
+      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#302019] via-[#171117] to-[#09090d] px-5 py-20">
+
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(180,110,45,0.18),transparent_65%)]" />
+
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+
+          <div className="badge badge-outline mb-8 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
             {story.zone}
           </div>
 
-          <h1 className="font-serif text-4xl font-bold leading-tight md:text-6xl">
+          <div className="mb-8 text-7xl text-amber-400/80">
+            ✧
+          </div>
+
+          <h1 className="font-serif text-5xl font-bold leading-tight tracking-wide md:text-7xl">
             {story.title}
           </h1>
 
-          <div className="divider mx-auto max-w-xs">
-            <span className="text-secondary">✦</span>
+          <div className="divider mx-auto my-8 max-w-xs before:bg-amber-400/30 after:bg-amber-400/30">
+            <span className="text-amber-400">✦</span>
           </div>
 
-          <p className="font-mono text-xs tracking-[0.3em] opacity-50">
+          <p className="font-mono text-xs tracking-[0.35em] text-amber-200/60">
             {story.chapter}
           </p>
+
         </div>
 
-        {/* Story Cover */}
-        <div className="card mb-12 overflow-hidden border border-base-content/10 bg-base-200">
-          <div className="flex min-h-64 items-center justify-center bg-gradient-to-br from-secondary/20 via-base-300 to-base-100">
-            <div className="text-center">
-              <div className="mb-4 text-7xl text-secondary">✧</div>
-              <p className="font-serif text-xl italic opacity-70">
-                A world waiting to be discovered
+        <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.3em] text-white/30">
+          SCROLL TO READ ↓
+        </span>
+      </section>
+
+      {/* Reading Area */}
+      <section className="px-5 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl">
+
+          <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-5">
+            <span className="font-mono text-xs tracking-widest text-amber-300/70">
+              THE STORY BEGINS
+            </span>
+
+            <span className="badge badge-ghost text-white/50">
+              ✧ Original Story
+            </span>
+          </div>
+
+          <article className="space-y-8">
+            {story.content.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`font-serif text-lg leading-10 text-[#d5ccbd] md:text-xl md:leading-[2.4] ${
+                  index === 0
+                    ? "first-letter:float-left first-letter:mr-4 first-letter:text-7xl first-letter:font-bold first-letter:text-amber-400"
+                    : ""
+                }`}
+              >
+                {paragraph}
               </p>
-            </div>
-          </div>
-        </div>
+            ))}
+          </article>
 
-        {/* Story Content */}
-        <article className="mx-auto max-w-2xl">
-          {story.content.map((paragraph, index) => (
-            <p
-              key={index}
-              className={`mb-7 font-serif text-lg leading-9 opacity-80 md:text-xl md:leading-10 ${
-                index === 0 ? "first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:text-secondary" : ""
-              }`}
-            >
-              {paragraph}
+          <div className="divider my-16 before:bg-white/10 after:bg-white/10">
+            <span className="text-amber-400">✦ ✦ ✦</span>
+          </div>
+
+          <div className="text-center">
+            <p className="font-serif text-2xl italic text-amber-200/70">
+              "Every ending is a beginning in disguise."
             </p>
-          ))}
-
-          <div className="divider my-12">
-            <span className="text-secondary">✦ ✦ ✦</span>
           </div>
 
-          <p className="text-center font-serif text-xl italic opacity-60">
-            And so, the story begins...
+        </div>
+      </section>
+
+      {/* Bottom Actions */}
+      <section className="border-t border-white/10 bg-[#111016] px-5 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+
+          <div className="mb-5 text-4xl text-amber-400">✧</div>
+
+          <h2 className="font-serif text-3xl font-bold md:text-4xl">
+            Another world awaits.
+          </h2>
+
+          <p className="mt-4 text-sm text-white/50">
+            Your imagination has no final chapter.
           </p>
-        </article>
 
-        {/* Story Actions */}
-        <div className="card mt-16 border border-base-content/10 bg-base-200/40">
-          <div className="card-body items-center gap-5 text-center">
-            <h2 className="text-2xl font-bold">
-              Your imagination created this world.
-            </h2>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="/#create" className="btn border-amber-400 bg-amber-400 text-black hover:bg-amber-300">
+              ✦ Create Another Story
+            </a>
 
-            <p className="text-sm opacity-60">
-              Ready to explore another story?
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              <a href="/#create" className="btn btn-secondary">
-                Create Another Story ✦
-              </a>
-
-              <a href="/#library" className="btn btn-outline">
-                My Stories
-              </a>
-            </div>
+            <a href="/#library" className="btn btn-outline border-white/20 text-white hover:bg-white/10">
+              My Stories
+            </a>
           </div>
-        </div>
 
-      </div>
+          <p className="mt-12 font-mono text-[10px] tracking-[0.3em] text-white/25">
+            KAHANAI — WHERE STORIES COME ALIVE
+          </p>
+
+        </div>
+      </section>
+
     </main>
   );
 }
