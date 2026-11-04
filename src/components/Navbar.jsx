@@ -1,61 +1,102 @@
-import React from 'react'
 
 function Navbar() {
+  const navItems = [
+    { label: "Home", href: "#home" },
+    { label: "Worlds", href: "#zones" },
+    { label: "About", href: "#about" },
+    { label: "Library", href: "#library" },
+  ];
+
   return (
-    <div className="navbar bg-base-300/80 text-base-content border-b border-base-content/10 px-4 md:px-10">
-      {/* Logo */}
-      <div className="navbar-start">
-        <a href="/" className="btn btn-ghost text-xl font-bold gap-1">
-          <span className="text-secondary text-2xl">✦</span>
-          Kahan<span className="text-secondary">AI</span>
-        </a>
-      </div>
+    <header className="sticky top-0 z-50 bg-transparent px-4 pt-4 md:px-8 md:pt-6">
+      <div className="fire-navbar relative mx-auto max-w-7xl">
+        {/* Fire animation */}
+        <div className="fire-layer" aria-hidden="true">
+          <span className="fire-flame flame-one" />
+          <span className="fire-flame flame-two" />
+          <span className="fire-flame flame-three" />
+          <span className="fire-flame flame-four" />
+          <span className="fire-flame flame-five" />
 
-      {/* Desktop Navigation */}
-      <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal gap-2 px-1">
-          <li>
-            <a href="#home">Home</a>
-          </li>
-          <li>
-            <a href="#zones">Explore Zones</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Actions */}
-      <div className="navbar-end gap-2">
-        <a href="#library" className="btn btn-ghost btn-sm hidden sm:flex">
-          My Stories
-        </a>
-        <a href="#create" className="btn btn-secondary btn-sm">
-          <span>✦</span> Create Story
-        </a>
-
-        {/* Mobile Menu */}
-        <div className="dropdown dropdown-end md:hidden">
-          <button
-            tabIndex={0}
-            className="btn btn-square btn-ghost"
-            aria-label="Open navigation menu"
-          >
-            ☰
-          </button>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2 shadow-xl"
-          >
-            <li><a href="#home">Home</a></li>
-            <li><a href="#zones">Explore Zones</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#library">My Stories</a></li>
-          </ul>
+          <span className="fire-ember ember-one" />
+          <span className="fire-ember ember-two" />
+          <span className="fire-ember ember-three" />
+          <span className="fire-ember ember-four" />
+          <span className="fire-ember ember-five" />
         </div>
+
+        {/* Floating pill */}
+        <nav className="navbar relative min-h-[76px] rounded-full border border-amber-400/25 bg-[#111016]/95 px-5 shadow-[0_10px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(249,115,22,0.10)] backdrop-blur-2xl md:px-8">
+
+          {/* Animated border */}
+          <div className="fire-border" />
+
+          {/* Logo */}
+          <div className="navbar-start">
+            <a
+              href="#home"
+              className="group flex items-center gap-2 text-xl font-bold tracking-wide text-[#eee8dc]"
+            >
+              <span className="text-2xl text-amber-400 transition-transform duration-500 group-hover:rotate-180">
+                ✦
+              </span>
+              Kahan<span className="text-amber-400">AI</span>
+            </a>
+          </div>
+
+          {/* Desktop navigation */}
+          <div className="navbar-center hidden lg:flex">
+            <ul className="flex items-center gap-2">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="nav-link relative rounded-full px-4 py-2 text-sm font-medium text-white/65 transition-colors duration-300 hover:text-amber-300"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Actions */}
+          <div className="navbar-end gap-3">
+            <a
+              href="#create"
+              className="btn btn-sm rounded-full border border-amber-400/40 bg-amber-500 text-[#160d05] shadow-[0_0_18px_rgba(245,158,11,0.18)] transition-all duration-300 hover:scale-105 hover:border-amber-300 hover:bg-amber-400"
+            >
+              <span>✦</span>
+              Create Story
+            </a>
+
+            {/* Mobile menu */}
+            <div className="dropdown dropdown-end lg:hidden">
+              <button
+                tabIndex={0}
+                className="btn btn-circle btn-ghost text-xl text-amber-300"
+                aria-label="Open navigation menu"
+              >
+                ☰
+              </button>
+
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[60] mt-4 w-48 rounded-2xl border border-amber-400/20 bg-[#111016] p-3 text-[#eee8dc] shadow-xl"
+              >
+                {navItems.map((item) => (
+                  <li key={item.label}>
+                    <a href={item.href} className="hover:bg-amber-400/10 hover:text-amber-300">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 }
 
