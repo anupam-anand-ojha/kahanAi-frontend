@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './components/Navbar'
+// import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import MyStories from './components/Mystories'
@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-  <Navbar/>
+  {/* <Navbar/> */}
   <Hero/>
   <About/>
   <MyStories/>
