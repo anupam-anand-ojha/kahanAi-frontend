@@ -8,7 +8,7 @@ function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent px-4 pt-4 md:px-8 md:pt-6">
+    <header className="sticky top-0 z-50 bg-transparent px-4  md:px-8 ">
       <div className="fire-navbar relative mx-auto max-w-7xl">
         {/* Fire animation */}
         <div className="fire-layer" aria-hidden="true">
