@@ -148,6 +148,7 @@ function HowItWorks() {
           <p className="mb-6 font-serif text-xl italic text-[#eee8dc]/50">
             Your next great story is waiting.
           </p>
+          
 
           <a
             href="#create"
