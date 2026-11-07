@@ -85,7 +85,7 @@ function Navbar() {
               className="btn btn-ghost gap-1 px-2 text-xl font-bold tracking-tight text-[#302417] hover:bg-[#8b642c]/10"
             >
               <span className="text-2xl text-[#93651f]">✦</span>
-              Kahan<span className="text-[#93651f]">AI</span>
+             <span>Kahan<span className="text-[#93651f]">AI</span></span>
             </a>
           </div>
 
