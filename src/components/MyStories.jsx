@@ -84,67 +84,78 @@ function MyStories() {
                   </span>
                 </div>
 
-                {/* Story Pages Bundle */}
-                <div className="group/pages relative flex h-56 items-center justify-center overflow-hidden rounded-box border border-amber-400/10 bg-gradient-to-br from-[#211a18] via-[#171319] to-[#09090d]">
-                  {/* Background Glow */}
-                  <div className="absolute h-40 w-40 rounded-full bg-amber-500/10 blur-3xl transition-all duration-700 group-hover/pages:scale-150" />
+                {/* Premium Ancient Pages Bundle */}
+                <div className="group/pages relative flex h-60 items-center justify-center overflow-hidden rounded-box border border-amber-200/10 bg-[radial-gradient(ellipse_at_center,_#38271f_0%,_#171218_55%,_#09090d_100%)]">
+                  {/* Ambient Glow */}
+                  <div className="absolute h-44 w-44 rounded-full bg-amber-500/10 blur-[70px] transition-all duration-700 group-hover/pages:bg-amber-400/20" />
 
-                  {/* Back Pages */}
-                  <div className="absolute h-40 w-32 rotate-[-13deg] rounded-sm border border-[#c6a77b]/30 bg-[#a88c65] shadow-xl transition-transform duration-500 group-hover/pages:-translate-x-3 group-hover/pages:-rotate-[20deg]">
-                    <div className="space-y-3 p-4 opacity-30">
-                      <div className="h-1 w-16 bg-[#493522]" />
-                      <div className="h-1 w-full bg-[#493522]" />
-                      <div className="h-1 w-4/5 bg-[#493522]" />
-                      <div className="h-1 w-full bg-[#493522]" />
-                      <div className="h-1 w-3/4 bg-[#493522]" />
-                    </div>
-                  </div>
-
-                  {/* Middle Page */}
-                  <div className="absolute h-44 w-36 rotate-[9deg] rounded-sm border border-[#c6a77b]/40 bg-[#d0b991] shadow-2xl transition-transform duration-500 group-hover/pages:translate-x-3 group-hover/pages:rotate-[14deg]">
-                    <div className="space-y-3 p-4 opacity-40">
-                      <div className="mx-auto h-1 w-12 bg-[#493522]" />
+                  {/* Back Page */}
+                  <div className="absolute h-44 w-36 translate-x-7 translate-y-1 rotate-[13deg] border border-[#a98a60]/50 bg-[#b69b74] shadow-xl transition-all duration-700 group-hover/pages:translate-x-12 group-hover/pages:rotate-[18deg]">
+                    <div className="absolute inset-2 border border-[#60472e]/20" />
+                    <div className="space-y-3 p-5 opacity-40">
+                      <div className="mx-auto h-px w-10 bg-[#493522]" />
                       <div className="h-px w-full bg-[#493522]" />
-                      <div className="h-1 w-full bg-[#493522]" />
-                      <div className="h-1 w-5/6 bg-[#493522]" />
-                      <div className="h-1 w-full bg-[#493522]" />
-                      <div className="h-1 w-4/5 bg-[#493522]" />
+                      <div className="h-px w-5/6 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-px w-4/5 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
                     </div>
                   </div>
 
-                  {/* Front Page */}
-                  <div className="relative flex h-48 w-40 rotate-[-2deg] flex-col items-center justify-center border border-[#d8bd91]/50 bg-[#e0c9a2] px-5 shadow-[0_15px_35px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover/pages:-translate-y-2 group-hover/pages:rotate-0">
-                    {/* Paper Texture Border */}
-                    <div className="absolute inset-2 border border-[#755a3c]/30" />
+                  {/* Second Page */}
+                  <div className="absolute h-48 w-36 -translate-x-7 rotate-[-12deg] border border-[#d2b58a]/50 bg-[#d0b58d] shadow-2xl transition-all duration-700 group-hover/pages:-translate-x-12 group-hover/pages:rotate-[-17deg]">
+                    <div className="absolute inset-2 border border-[#755a3c]/25" />
+                    <div className="space-y-3 p-5 opacity-35">
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-px w-4/5 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-px w-5/6 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-px w-3/4 bg-[#493522]" />
+                    </div>
+                  </div>
 
-                    <span className="font-mono text-[8px] tracking-[0.3em] text-[#755a3c]/70">
-                      CHAPTER {story.id}
+                  {/* Main Ancient Parchment */}
+                  <div className="relative flex h-52 w-40 -rotate-2 flex-col items-center overflow-hidden border border-[#e0c69a]/70 bg-gradient-to-br from-[#ead8b5] via-[#d7bd91] to-[#b99b6d] px-5 py-5 shadow-[0_20px_45px_rgba(0,0,0,0.55)] transition-all duration-700 group-hover/pages:-translate-y-3 group-hover/pages:rotate-0">
+                    {/* Paper Border */}
+                    <div className="absolute inset-2 border border-[#795d3b]/35" />
+                    <div className="absolute inset-3 border border-[#795d3b]/15" />
+
+                    {/* Paper Details */}
+                    <span className="font-mono text-[7px] tracking-[0.35em] text-[#755a3c]/70">
+                      THE LOST CHRONICLES
                     </span>
 
-                    <div className="my-3 h-px w-12 bg-[#755a3c]/40" />
+                    <div className="my-3 h-px w-12 bg-[#795d3b]/50" />
 
-                    <span className="font-serif text-5xl text-[#493522]">
+                    <span className="font-serif text-4xl text-[#493522]">
                       {story.symbol}
                     </span>
 
-                    <h3 className="mt-3 text-center font-serif text-sm font-bold text-[#493522]">
+                    <h3 className="mt-2 text-center font-serif text-sm font-bold text-[#493522]">
                       {story.title}
                     </h3>
 
                     <span className="mt-2 font-mono text-[7px] tracking-[0.25em] text-[#755a3c]/70">
-                      AN UNWRITTEN TALE
+                      CHAPTER {story.id}
                     </span>
 
+                    {/* Written Lines */}
+                    <div className="mt-3 w-full space-y-1.5 opacity-35">
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-px w-5/6 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
+                    </div>
+
                     {/* Folded Corner */}
-                    <div className="absolute right-0 top-0 h-5 w-5 border-b border-l border-[#755a3c]/30 bg-[#c4a77e]" />
+                    <div className="absolute right-0 top-0 h-6 w-6 border-b border-l border-[#795d3b]/30 bg-[#b99b6d] shadow-[-2px_2px_5px_rgba(0,0,0,0.15)]" />
                   </div>
 
-                  {/* Bottom Label */}
-                  <span className="absolute bottom-3 font-mono text-[9px] tracking-[0.3em] text-amber-200/40">
-                    PRESERVED IN THE ARCHIVE 
+                  {/* Bottom Caption */}
+                  <span className="absolute bottom-2 font-mono text-[8px] tracking-[0.35em] text-amber-100/35">
+                    FRAGMENTS OF ANOTHER WORLD
                   </span>
                 </div>
-
 
                 {/* Story Information */}
                 <div>
