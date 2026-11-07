@@ -1,4 +1,3 @@
-
 const steps = [
   {
     number: "01",
@@ -40,10 +39,8 @@ function HowItWorks() {
       <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-amber-600/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-6xl">
-
         {/* Section Heading */}
         <div className="mx-auto mb-20 max-w-2xl text-center">
-
           <div className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
             THE CREATION PROCESS
           </div>
@@ -56,9 +53,9 @@ function HowItWorks() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-xl text-sm leading-8 text-[#eee8dc]/50 md:text-base">
-            Every great story begins with an idea.
-            Discover how KahanAI transforms your imagination
-            into an unforgettable storytelling experience.
+            Every great story begins with an idea. Discover how KahanAI
+            transforms your imagination into an unforgettable storytelling
+            experience.
           </p>
 
           <div className="divider mx-auto mt-8 max-w-xs before:bg-amber-400/20 after:bg-amber-400/20">
@@ -68,77 +65,86 @@ function HowItWorks() {
 
         {/* Timeline */}
         <ul className="timeline timeline-snap-icon timeline-vertical max-md:timeline-compact">
-
           {steps.map((step, index) => (
             <li key={step.number}>
-
-              {index !== 0 && (
-                <hr className="bg-amber-400/30" />
-              )}
+              {index !== 0 && <hr className="bg-amber-400/30" />}
 
               {/* Timeline Icon */}
               <div className="timeline-middle">
                 <div className="avatar placeholder">
                   <div className="w-14 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 shadow-[0_0_25px_rgba(251,191,36,0.08)]">
-                    <span className="text-2xl">
-                      {step.icon}
-                    </span>
+                    <span className="text-2xl">{step.icon}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Step Card */}
+              {/* Compact Manuscript Page */}
               <div
-                className={`mb-12 ${
+                className={`mb-10 ${
                   index % 2 === 0
                     ? "timeline-start md:text-end"
                     : "timeline-end"
                 }`}
               >
-                <div className="card border border-white/10 bg-[#111016]/90 text-left shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_15px_50px_rgba(180,120,35,0.08)]">
+                <div className="group relative mx-1">
+                  {/* Slightly Offset Paper Layers */}
+                  <div className="absolute inset-0 translate-x-1.5 translate-y-1 rotate-[1.5deg] border border-[#b99b70]/30 bg-[#b99b70]" />
 
-                  <div className="card-body gap-4 p-6 md:p-8">
+                  {/* Main Page */}
+                  <div className="relative overflow-hidden border border-[#b99b70]/60 bg-gradient-to-br from-[#e8d6b3] via-[#ddc69e] to-[#cbb18a] text-[#493522] shadow-[0_8px_25px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:-translate-y-1">
+                    <div className="absolute inset-[6px] border border-[#795d3b]/25" />
 
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs tracking-[0.3em] text-amber-400/70">
-                        STEP / {step.number}
-                      </span>
+                    <div className="relative p-5 md:p-6">
+                      {/* Small Header */}
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[8px] tracking-[0.25em] text-[#755a3c]/65">
+                          KAHANAI / {step.number}
+                        </span>
+                        <span className="font-serif text-lg text-[#795d3b]">
+                          {step.icon}
+                        </span>
+                      </div>
 
-                      <span className="text-xl text-amber-400/70">
-                        {step.icon}
-                      </span>
+                      {/* Title */}
+                      <h3 className="mt-5 font-serif text-xl font-bold text-[#382719] md:text-2xl">
+                        {step.title}
+                      </h3>
+
+                      {/* Ornament */}
+                      <div className="my-3 flex items-center gap-2">
+                        <span className="text-[10px] text-[#8a6842]">✦</span>
+                        <div className="h-px w-8 bg-[#806344]/40" />
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs leading-6 text-[#59432e]/80 md:text-sm">
+                        {step.description}
+                      </p>
+
+                      {/* Footer */}
+                      <div className="mt-5 flex items-center justify-between border-t border-[#806344]/25 pt-3">
+                        <span className="font-mono text-[7px] tracking-[0.2em] text-[#765a3b]/60">
+                          ANCIENT CHRONICLES
+                        </span>
+                        <span className="font-serif text-xs italic text-[#765a3b]/60">
+                          ✧ {step.number}
+                        </span>
+                      </div>
                     </div>
 
-                    <h3 className="font-serif text-2xl font-bold text-[#eee8dc] md:text-3xl">
-                      {step.title}
-                    </h3>
-
-                    <p className="text-sm leading-8 text-[#eee8dc]/50">
-                      {step.description}
-                    </p>
-
-                    <div className="divider my-0 before:bg-white/10 after:bg-white/10" />
-
-                    <span className="font-mono text-[10px] tracking-[0.25em] text-amber-400/50">
-                      KAHANAI / {step.number}
-                    </span>
-
+                    {/* Tiny Folded Corner */}
+                    <div className="absolute right-0 top-0 h-5 w-5 border-b border-l border-[#795d3b]/25 bg-[#cbb18a]" />
                   </div>
                 </div>
               </div>
 
-              {index !== steps.length - 1 && (
-                <hr className="bg-amber-400/30" />
-              )}
-
+              {index !== steps.length - 1 && <hr className="bg-amber-400/30" />}
             </li>
           ))}
-
         </ul>
 
         {/* CTA */}
         <div className="mt-16 text-center">
-
           <p className="mb-6 font-serif text-xl italic text-[#eee8dc]/50">
             Your next great story is waiting.
           </p>
@@ -151,9 +157,7 @@ function HowItWorks() {
             Start Your Story
             <span>↗</span>
           </a>
-
         </div>
-
       </div>
     </section>
   );

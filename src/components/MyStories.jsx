@@ -101,6 +101,7 @@ function MyStories() {
                       <div className="h-px w-full bg-[#493522]" />
                     </div>
                   </div>
+                  
 
                   {/* Second Page */}
                   <div className="absolute h-48 w-36 -translate-x-7 rotate-[-12deg] border border-[#d2b58a]/50 bg-[#d0b58d] shadow-2xl transition-all duration-700 group-hover/pages:-translate-x-12 group-hover/pages:rotate-[-17deg]">
