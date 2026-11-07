@@ -1,4 +1,3 @@
-
 const stories = [
   {
     id: "01",
@@ -36,10 +35,8 @@ function MyStories() {
       <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-amber-600/10 blur-[130px]" />
 
       <div className="relative mx-auto max-w-6xl">
-
         {/* Section Heading */}
         <div className="mb-14 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-
           <div>
             <div className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
               YOUR PERSONAL ARCHIVE
@@ -53,9 +50,8 @@ function MyStories() {
             </h2>
 
             <p className="mt-5 max-w-lg text-sm leading-8 text-[#eee8dc]/50 md:text-base">
-              Every world you imagine leaves a trace.
-              Discover your creations and revisit the stories
-              that deserve to be remembered.
+              Every world you imagine leaves a trace. Discover your creations
+              and revisit the stories that deserve to be remembered.
             </p>
           </div>
 
@@ -71,14 +67,12 @@ function MyStories() {
 
         {/* Story Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
           {stories.map((story) => (
             <article
               key={story.id}
               className="card group overflow-hidden border border-white/10 bg-[#111016] transition-all duration-500 hover:-translate-y-2 hover:border-amber-400/40 hover:shadow-[0_20px_60px_rgba(180,120,35,0.08)]"
             >
               <div className="card-body gap-5 p-6 md:p-7">
-
                 {/* Card Header */}
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs tracking-[0.2em] text-amber-400/60">
@@ -90,24 +84,64 @@ function MyStories() {
                   </span>
                 </div>
 
-                {/* Story Artwork */}
-                <div className="relative flex h-52 items-center justify-center overflow-hidden rounded-box border border-amber-400/10 bg-gradient-to-br from-[#302019] via-[#19131a] to-[#09090d]">
+                {/* Story Pages Bundle */}
+                <div className="group/pages relative flex h-56 items-center justify-center overflow-hidden rounded-box border border-amber-400/10 bg-gradient-to-br from-[#211a18] via-[#171319] to-[#09090d]">
+                  {/* Background Glow */}
+                  <div className="absolute h-40 w-40 rounded-full bg-amber-500/10 blur-3xl transition-all duration-700 group-hover/pages:scale-150" />
 
-                  <div className="absolute h-44 w-44 rounded-full bg-amber-500/10 blur-3xl transition-all duration-700 group-hover:scale-150" />
-
-                  <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-amber-400/30 transition-transform duration-700 group-hover:rotate-12 group-hover:scale-110">
-
-                    <div className="absolute inset-3 rounded-full border border-dashed border-amber-400/30" />
-
-                    <div className="absolute inset-7 rounded-full border border-amber-400/20" />
-
-                    <span className="font-serif text-6xl text-amber-400">
-                      {story.symbol}
-                    </span>
+                  {/* Back Pages */}
+                  <div className="absolute h-40 w-32 rotate-[-13deg] rounded-sm border border-[#c6a77b]/30 bg-[#a88c65] shadow-xl transition-transform duration-500 group-hover/pages:-translate-x-3 group-hover/pages:-rotate-[20deg]">
+                    <div className="space-y-3 p-4 opacity-30">
+                      <div className="h-1 w-16 bg-[#493522]" />
+                      <div className="h-1 w-full bg-[#493522]" />
+                      <div className="h-1 w-4/5 bg-[#493522]" />
+                      <div className="h-1 w-full bg-[#493522]" />
+                      <div className="h-1 w-3/4 bg-[#493522]" />
+                    </div>
                   </div>
 
-                  <span className="absolute bottom-4 font-mono text-[9px] tracking-[0.3em] text-amber-200/40">
-                    A WORLD OF ITS OWN
+                  {/* Middle Page */}
+                  <div className="absolute h-44 w-36 rotate-[9deg] rounded-sm border border-[#c6a77b]/40 bg-[#d0b991] shadow-2xl transition-transform duration-500 group-hover/pages:translate-x-3 group-hover/pages:rotate-[14deg]">
+                    <div className="space-y-3 p-4 opacity-40">
+                      <div className="mx-auto h-1 w-12 bg-[#493522]" />
+                      <div className="h-px w-full bg-[#493522]" />
+                      <div className="h-1 w-full bg-[#493522]" />
+                      <div className="h-1 w-5/6 bg-[#493522]" />
+                      <div className="h-1 w-full bg-[#493522]" />
+                      <div className="h-1 w-4/5 bg-[#493522]" />
+                    </div>
+                  </div>
+
+                  {/* Front Page */}
+                  <div className="relative flex h-48 w-40 rotate-[-2deg] flex-col items-center justify-center border border-[#d8bd91]/50 bg-[#e0c9a2] px-5 shadow-[0_15px_35px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover/pages:-translate-y-2 group-hover/pages:rotate-0">
+                    {/* Paper Texture Border */}
+                    <div className="absolute inset-2 border border-[#755a3c]/30" />
+
+                    <span className="font-mono text-[8px] tracking-[0.3em] text-[#755a3c]/70">
+                      CHAPTER {story.id}
+                    </span>
+
+                    <div className="my-3 h-px w-12 bg-[#755a3c]/40" />
+
+                    <span className="font-serif text-5xl text-[#493522]">
+                      {story.symbol}
+                    </span>
+
+                    <h3 className="mt-3 text-center font-serif text-sm font-bold text-[#493522]">
+                      {story.title}
+                    </h3>
+
+                    <span className="mt-2 font-mono text-[7px] tracking-[0.25em] text-[#755a3c]/70">
+                      AN UNWRITTEN TALE
+                    </span>
+
+                    {/* Folded Corner */}
+                    <div className="absolute right-0 top-0 h-5 w-5 border-b border-l border-[#755a3c]/30 bg-[#c4a77e]" />
+                  </div>
+
+                  {/* Bottom Label */}
+                  <span className="absolute bottom-3 font-mono text-[9px] tracking-[0.3em] text-amber-200/40">
+                    PRESERVED IN THE ARCHIVE 
                   </span>
                 </div>
 
@@ -124,7 +158,6 @@ function MyStories() {
 
                 {/* Card Footer */}
                 <div className="card-actions mt-auto items-center justify-between border-t border-white/10 pt-5">
-
                   <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/50">
                     STORY CONCEPT
                   </span>
@@ -140,18 +173,14 @@ function MyStories() {
                   >
                     Create Similar <span>↗</span>
                   </button>
-
-
                 </div>
               </div>
             </article>
           ))}
-
         </div>
 
         {/* Archive Notice */}
         <div className="alert mt-10 border border-amber-400/15 bg-[#111016] text-[#eee8dc]">
-
           <span className="text-2xl text-amber-400">✦</span>
 
           <div>
@@ -160,11 +189,10 @@ function MyStories() {
             </h3>
 
             <p className="mt-1 text-sm leading-6 text-[#eee8dc]/50">
-              These are sample story concepts. Connect your backend
-              to display and manage your actual AI-generated stories.
+              These are sample story concepts. Connect your backend to display
+              and manage your actual AI-generated stories.
             </p>
           </div>
-
         </div>
 
         {/* Bottom Decoration */}
@@ -174,7 +202,6 @@ function MyStories() {
           </p>
           <div className="mt-5 text-amber-400">✦</div>
         </div>
-
       </div>
     </section>
   );
