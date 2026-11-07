@@ -145,6 +145,7 @@ function MyStories() {
                   </span>
                 </div>
 
+
                 {/* Story Information */}
                 <div>
                   <h3 className="font-serif text-2xl font-bold leading-snug text-[#eee8dc] transition-colors group-hover:text-amber-300">
