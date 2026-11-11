@@ -1,56 +1,49 @@
 function Navbar() {
-  const pages = [
-    {
-      color: "#a98d65",
-      clip: "polygon(1% 5%, 98% 0%, 100% 94%, 3% 100%, 0% 80%)",
-      hover: "group-hover:translate-y-5 group-hover:-rotate-[1deg]",
-    },
-    {
-      color: "#c3a77c",
-      clip: "polygon(0% 2%, 97% 0%, 100% 100%, 2% 96%)",
-      hover: "group-hover:translate-y-4 group-hover:rotate-[0.8deg]",
-    },
-    {
-      color: "#b79a6e",
-      clip: "polygon(2% 0%, 100% 3%, 98% 97%, 0% 100%)",
-      hover: "group-hover:translate-y-3 group-hover:-rotate-[0.7deg]",
-    },
-    {
-      color: "#d1b990",
-      clip: "polygon(0% 3%, 99% 0%, 100% 97%, 1% 100%)",
-      hover: "group-hover:translate-y-2 group-hover:rotate-[0.6deg]",
-    },
-    {
-      color: "#c5aa7e",
-      clip: "polygon(1% 0%, 100% 2%, 98% 100%, 0% 96%)",
-      hover: "group-hover:translate-y-1 group-hover:-rotate-[0.5deg]",
-    },
-  ];
+ 
+const pages = [
+  {
+    color: "#a98d65",
+    hover: "group-hover:translate-y-4 group-hover:rotate-[-0.5deg]",
+  },
+  {
+    color: "#c3a77c",
+    hover: "group-hover:translate-y-3 group-hover:rotate-[0.4deg]",
+  },
+  {
+    color: "#b79a6e",
+    hover: "group-hover:translate-y-2",
+  },
+  {
+    color: "#d1b990",
+    hover: "group-hover:translate-y-1",
+  },
+  {
+    color: "#c5aa7e",
+    hover: "",
+  },
+];
+
 
   return (
     <div className="sticky top-0 z-50 w-full">
       <div className="group relative w-full">
 
         {/* Premium layered manuscript bundle */}
-        {pages.map((page, index) => (
-          <div
-            key={index}
-            className={`pointer-events-none absolute inset-0 border border-[#80613b]/50 shadow-[0_5px_12px_rgba(0,0,0,0.22)] transition-all duration-700 ease-out ${page.hover}`}
-            style={{
-              backgroundColor: page.color,
-              clipPath: page.clip,
-              backgroundImage: `
-                radial-gradient(ellipse at 12% 20%, rgba(75,43,16,.28), transparent 25%),
-                radial-gradient(ellipse at 88% 80%, rgba(75,43,16,.22), transparent 28%),
-                repeating-linear-gradient(0deg, transparent 0px, rgba(75,48,20,.07) 1px, transparent 3px)
-              `,
-            }}
-          />
-        ))}
+      
+{pages.map((page, index) => (
+  <div
+    key={index}
+    className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-transform duration-500 ease-out ${page.hover}`}
+    style={{
+      backgroundColor: page.color,
+      transform: "translateZ(0)",
+    }}
+  />
+))}
 
         {/* Main premium parchment */}
         <div
-          className="navbar relative min-h-16 w-full overflow-hidden border border-[#a88a59]/60 px-4 text-[#302417] shadow-[0_10px_35px_rgba(0,0,0,0.38)] transition-all duration-500 group-hover:-translate-y-1 md:px-8"
+ className="navbar relative z-10 min-h-16 w-full overflow-hidden border border-[#a88a59]/50 px-4 text-[#302417] shadow-md md:px-8"
           style={{
             backgroundImage: `
               radial-gradient(ellipse at 0% 50%, rgba(112,73,34,.18), transparent 28%),
