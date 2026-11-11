@@ -1,49 +1,46 @@
 function Navbar() {
- 
-const pages = [
-  {
-    color: "#a98d65",
-    hover: "group-hover:translate-y-4 group-hover:rotate-[-0.5deg]",
-  },
-  {
-    color: "#c3a77c",
-    hover: "group-hover:translate-y-3 group-hover:rotate-[0.4deg]",
-  },
-  {
-    color: "#b79a6e",
-    hover: "group-hover:translate-y-2",
-  },
-  {
-    color: "#d1b990",
-    hover: "group-hover:translate-y-1",
-  },
-  {
-    color: "#c5aa7e",
-    hover: "",
-  },
-];
-
+  const pages = [
+    {
+      color: "#a98d65",
+      hover: "group-hover:translate-y-4 group-hover:rotate-[-0.5deg]",
+    },
+    {
+      color: "#c3a77c",
+      hover: "group-hover:translate-y-3 group-hover:rotate-[0.4deg]",
+    },
+    {
+      color: "#b79a6e",
+      hover: "group-hover:translate-y-2",
+    },
+    {
+      color: "#d1b990",
+      hover: "group-hover:translate-y-1",
+    },
+    {
+      color: "#c5aa7e",
+      hover: "",
+    },
+  ];
 
   return (
     <div className="sticky top-0 z-50 w-full">
       <div className="group relative w-full">
-
         {/* Premium layered manuscript bundle */}
-      
-{pages.map((page, index) => (
-  <div
-    key={index}
-    className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-transform duration-500 ease-out ${page.hover}`}
-    style={{
-      backgroundColor: page.color,
-      transform: "translateZ(0)",
-    }}
-  />
-))}
+
+        {pages.map((page, index) => (
+          <div
+            key={index}
+            className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-transform duration-500 ease-out ${page.hover}`}
+            style={{
+              backgroundColor: page.color,
+              transform: "translateZ(0)",
+            }}
+          />
+        ))}
 
         {/* Main premium parchment */}
         <div
- className="navbar relative z-10 min-h-16 w-full overflow-hidden border border-[#a88a59]/50 px-4 text-[#302417] shadow-md md:px-8"
+          className="navbar relative z-10 min-h-16 w-full overflow-hidden border border-[#a88a59]/50 px-4 text-[#302417] shadow-md md:px-8"
           style={{
             backgroundImage: `
               radial-gradient(ellipse at 0% 50%, rgba(112,73,34,.18), transparent 28%),
@@ -78,7 +75,9 @@ const pages = [
               className="btn btn-ghost gap-1 px-2 text-xl font-bold tracking-tight text-[#302417] hover:bg-[#8b642c]/10"
             >
               <span className="text-2xl text-[#93651f]">✦</span>
-             <span>Kahan<span className="text-[#93651f]">AI</span></span>
+              <span>
+                Kahan<span className="text-[#93651f]">AI</span>
+              </span>
             </a>
           </div>
 
@@ -134,10 +133,18 @@ const pages = [
                 tabIndex={0}
                 className="menu dropdown-content z-50 mt-3 w-52 rounded-sm border border-[#a88a59] bg-[#e8d7b3] p-3 text-[#302417] shadow-2xl"
               >
-                <li><a href="#home">Home</a></li>
-                <li><a href="#zones">Explore Zones</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#library">My Stories</a></li>
+                <li>
+                  <a href="#home">Home</a>
+                </li>
+                <li>
+                  <a href="#zones">Explore Zones</a>
+                </li>
+                <li>
+                  <a href="#about">About</a>
+                </li>
+                <li>
+                  <a href="#library">My Stories</a>
+                </li>
               </ul>
             </div>
           </div>
