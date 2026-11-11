@@ -2,11 +2,11 @@ function Navbar() {
   const pages = [
     {
       color: "#a98d65",
-      hover: "group-hover:translate-y-4 group-hover:rotate-[-0.5deg]",
+      hover: "group-hover:translate-y-4",
     },
     {
       color: "#c3a77c",
-      hover: "group-hover:translate-y-3 group-hover:rotate-[0.4deg]",
+      hover: "group-hover:translate-y-3",
     },
     {
       color: "#b79a6e",
@@ -30,10 +30,9 @@ function Navbar() {
         {pages.map((page, index) => (
           <div
             key={index}
-            className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-transform duration-500 ease-out ${page.hover}`}
+            className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-[translate] duration-300 ease-out ${page.hover}`}
             style={{
               backgroundColor: page.color,
-              transform: "translateZ(0)",
             }}
           />
         ))}
