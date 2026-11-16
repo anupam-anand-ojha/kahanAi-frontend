@@ -1,4 +1,9 @@
+
+import { motion, useReducedMotion } from "framer-motion";
+
 function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   const zones = [
     {
       id: "01",
@@ -38,6 +43,26 @@ function Hero() {
     },
   ];
 
+  const ease = [0.22, 1, 0.36, 1];
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease },
+    },
+  };
+
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
   return (
     <section
       id="home"
@@ -62,7 +87,12 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-4 lg:px-12 lg:pt-6">
         {/* Top label */}
-        <div className="flex items-center justify-between border-y border-amber-500/20 py-4">
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease }}
+          className="flex items-center justify-between border-y border-amber-500/20 py-4"
+        >
           <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-200/60 sm:text-xs">
             KAHANAI / STORY ENGINE
           </span>
@@ -71,18 +101,28 @@ function Hero() {
             <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.7)]" />
             IMAGINATION HAS NO RULES
           </span>
-        </div>
+        </motion.div>
 
         {/* Main hero */}
         <div className="grid items-center gap-14 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:py-12">
           {/* Left content */}
-          <div>
-            <p className="mb-7 flex items-center gap-3 font-mono text-xs tracking-widest text-amber-400 sm:text-sm">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p
+              variants={fadeUp}
+              className="mb-7 flex items-center gap-3 font-mono text-xs tracking-widest text-amber-400 sm:text-sm"
+            >
               <span className="h-px w-8 bg-amber-500/60" />
               THE ART OF WHAT-IF
-            </p>
+            </motion.p>
 
-            <h1 className="text-6xl font-bold leading-[0.95] tracking-[-0.06em] sm:text-7xl lg:text-8xl">
+            <motion.h1
+              variants={fadeUp}
+              className="text-6xl font-bold leading-[0.95] tracking-[-0.06em] sm:text-7xl lg:text-8xl"
+            >
               WHAT IF
               <br />
               <span className="font-serif font-normal italic text-amber-400">
@@ -90,66 +130,149 @@ function Hero() {
               </span>
               <br />
               THE RULES?
-            </h1>
+            </motion.h1>
 
-            <div className="my-8 flex items-center gap-3">
+            <motion.div
+              variants={fadeUp}
+              className="my-8 flex items-center gap-3"
+            >
               <span className="h-px w-12 bg-amber-500/50" />
               <span className="text-sm text-amber-400">✦</span>
               <span className="h-px w-12 bg-amber-500/50" />
-            </div>
+            </motion.div>
 
-            <p className="max-w-lg text-base leading-8 text-[#c5b9a5]/70 sm:text-lg">
+            <motion.p
+              variants={fadeUp}
+              className="max-w-lg text-base leading-8 text-[#c5b9a5]/70 sm:text-lg"
+            >
               A world where stories don't follow paths — they follow you. Pick a
               universe, invent a possibility, and watch your imagination become
               a tale of its own.
-            </p>
+            </motion.p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-5">
-              <a
+            <motion.div
+              variants={fadeUp}
+              className="mt-10 flex flex-wrap items-center gap-5"
+            >
+              <motion.a
                 href="#zones"
-                className="group inline-flex items-center gap-4 border border-amber-500/50 bg-gradient-to-r from-amber-500/20 to-orange-500/10 px-7 py-4 font-serif text-base text-amber-300 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:bg-amber-500/20 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]"
+                className="group inline-flex items-center gap-4 border border-amber-500/50 bg-gradient-to-r from-amber-500/20 to-orange-500/10 px-7 py-4 font-serif text-base text-amber-300 transition-all duration-300 hover:border-amber-400 hover:bg-amber-500/20 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]"
+                whileHover={shouldReduceMotion ? {} : { y: -5 }}
+                whileTap={{ scale: 0.97 }}
               >
                 Enter the story lab
-                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <motion.span
+                  className="inline-block"
+                  whileHover={shouldReduceMotion ? {} : { x: 5, y: -5 }}
+                >
                   ↗
-                </span>
-              </a>
+                </motion.span>
+              </motion.a>
 
               <span className="font-mono text-[10px] tracking-[0.2em] text-white/35">
                 NO TWO STORIES ALIKE
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right: Story composition */}
-          <div className="relative mx-auto w-full max-w-md">
+          <motion.div
+            initial={
+              shouldReduceMotion
+                ? false
+                : { opacity: 0, scale: 0.85, y: 30 }
+            }
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.2, ease }}
+            className="relative mx-auto w-full max-w-md"
+          >
             {/* Circular ornaments */}
-            <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber-500/20" />
-            <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-amber-500/30" />
+            <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber-500/20">
+              <motion.div
+                className="absolute inset-0 rounded-full border border-transparent border-t-amber-400/50"
+                animate={shouldReduceMotion ? {} : { rotate: 360 }}
+                transition={{
+                  duration: 35,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </div>
+
+            <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-amber-500/30">
+              <motion.div
+                className="absolute inset-0 rounded-full border border-transparent border-b-amber-300/50"
+                animate={shouldReduceMotion ? {} : { rotate: -360 }}
+                transition={{
+                  duration: 45,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </div>
 
             <div className="relative flex aspect-square items-center justify-center">
               {/* Floating symbols */}
-              <div className="absolute left-[13%] top-[14%] flex h-16 w-16 rotate-[-12deg] items-center justify-center border border-amber-400/40 bg-[#17120f]/90 shadow-[0_10px_30px_rgba(0,0,0,0.4)] sm:h-20 sm:w-20">
+              <motion.div
+                className="absolute left-[13%] top-[14%] flex h-16 w-16 rotate-[-12deg] items-center justify-center border border-amber-400/40 bg-[#17120f]/90 shadow-[0_10px_30px_rgba(0,0,0,0.4)] sm:h-20 sm:w-20"
+                animate={shouldReduceMotion ? {} : { y: [0, -12, 0], rotate: [-12, -5, -12] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <span className="text-3xl text-amber-400">✳</span>
-              </div>
+              </motion.div>
 
-              <div className="absolute right-[9%] top-[22%] flex h-14 w-14 rotate-[12deg] items-center justify-center border border-amber-400/20 bg-[#17120f]/90 sm:h-16 sm:w-16">
+              <motion.div
+                className="absolute right-[9%] top-[22%] flex h-14 w-14 rotate-[12deg] items-center justify-center border border-amber-400/20 bg-[#17120f]/90 sm:h-16 sm:w-16"
+                animate={shouldReduceMotion ? {} : { y: [0, 12, 0], rotate: [12, 5, 12] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <span className="text-2xl text-amber-200">☾</span>
-              </div>
+              </motion.div>
 
-              <div className="absolute bottom-[15%] left-[17%] flex h-14 w-14 rotate-[8deg] items-center justify-center border border-amber-400/20 bg-[#17120f]/90 sm:h-16 sm:w-16">
+              <motion.div
+                className="absolute bottom-[15%] left-[17%] flex h-14 w-14 rotate-[8deg] items-center justify-center border border-amber-400/20 bg-[#17120f]/90 sm:h-16 sm:w-16"
+                animate={shouldReduceMotion ? {} : { y: [0, -10, 0], rotate: [8, 15, 8] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <span className="text-2xl text-amber-200">⌘</span>
-              </div>
+              </motion.div>
 
-              <div className="absolute bottom-[13%] right-[15%] flex h-16 w-16 rotate-[-8deg] items-center justify-center border border-amber-400/40 bg-[#17120f]/90 sm:h-20 sm:w-20">
+              <motion.div
+                className="absolute bottom-[13%] right-[15%] flex h-16 w-16 rotate-[-8deg] items-center justify-center border border-amber-400/40 bg-[#17120f]/90 sm:h-20 sm:w-20"
+                animate={shouldReduceMotion ? {} : { y: [0, 11, 0], rotate: [-8, -15, -8] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <span className="text-3xl text-amber-400">✧</span>
-              </div>
+              </motion.div>
 
               {/* Chapter Zero — 3D Storybook */}
-              <div className="relative z-10 [perspective:1000px]">
+              <motion.div
+                className="relative z-10 [perspective:1000px]"
+                animate={
+                  shouldReduceMotion
+                    ? {}
+                    : {
+                        y: [0, -10, 0],
+                        rotateZ: [0, 1.5, 0, -1.5, 0],
+                      }
+                }
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={
+                  shouldReduceMotion
+                    ? {}
+                    : { rotateY: -8, scale: 1.03 }
+                }
+                style={{ transformStyle: "preserve-3d" }}
+              >
                 {/* Book pages behind cover */}
                 <div className="absolute inset-y-2 -right-3 w-full rounded-r-md border border-amber-200/30 bg-[#bda477] shadow-xl" />
+
                 <div className="absolute inset-y-1 -right-2 w-full rounded-r-md border border-amber-200/30 bg-[#e8d5aa]" />
+
                 <div className="absolute inset-y-0 -right-1 w-full rounded-r-md bg-[#d8c397]" />
 
                 {/* Book cover */}
@@ -162,9 +285,14 @@ function Hero() {
                   <div className="absolute inset-[18px] border border-amber-200/10" />
 
                   {/* Book ornaments */}
-                  <span className="absolute top-7 text-xl text-amber-400/80">
+                  <motion.span
+                    className="absolute top-7 text-xl text-amber-400/80"
+                    animate={shouldReduceMotion ? {} : { rotate: [0, 180, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  >
                     ✦
-                  </span>
+                  </motion.span>
+
                   <span className="absolute bottom-7 text-xl text-amber-400/80">
                     ✦
                   </span>
@@ -196,7 +324,7 @@ function Hero() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Figure labels */}
               <span className="absolute left-0 top-1/2 font-mono text-[10px] tracking-widest text-amber-100/40">
@@ -213,39 +341,77 @@ function Hero() {
               <span>One blank page</span>
               <span>Infinite outcomes ↗</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Story zone selection */}
         <section id="zones" className="border-t border-amber-500/20 pt-12">
-          <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={stagger}
+            className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"
+          >
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 border border-amber-500/30 px-3 py-1.5 text-[10px] tracking-[0.2em] text-amber-400">
+              <motion.div
+                variants={fadeUp}
+                className="mb-5 inline-flex items-center gap-2 border border-amber-500/30 px-3 py-1.5 text-[10px] tracking-[0.2em] text-amber-400"
+              >
                 <span>✦</span>
                 FIND YOUR UNIVERSE
-              </div>
+              </motion.div>
 
-              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              <motion.h2
+                variants={fadeUp}
+                className="text-4xl font-bold tracking-tight sm:text-5xl"
+              >
                 Choose your
                 <span className="mt-1 block font-serif font-normal italic text-amber-400">
                   narrative
                 </span>
-              </h2>
+              </motion.h2>
             </div>
 
-            <p className="max-w-xs text-sm leading-6 text-[#c5b9a5]/60">
+            <motion.p
+              variants={fadeUp}
+              className="max-w-xs text-sm leading-6 text-[#c5b9a5]/60"
+            >
               Every zone opens the door to a different reality. Choose a world
               and let your imagination take over.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Storybook Zone Collection */}
           <div className="grid grid-cols-1 gap-8 pt-4 sm:grid-cols-2 xl:grid-cols-4">
-            {zones.map((zone) => (
-              <a
+            {zones.map((zone, index) => (
+              <motion.a
                 key={zone.id}
                 href={`#zone-${zone.id}`}
                 className="group relative block [perspective:1200px]"
+                initial={
+                  shouldReduceMotion
+                    ? false
+                    : { opacity: 0, y: 45, rotateX: 8 }
+                }
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.12,
+                  ease,
+                }}
+                whileHover={
+                  shouldReduceMotion
+                    ? {}
+                    : {
+                        y: -10,
+                        rotateY: index % 2 === 0 ? 4 : -4,
+                        rotateX: -2,
+                      }
+                }
+                whileTap={{ scale: 0.98 }}
+                style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Pages behind the book */}
                 <div className="absolute inset-y-3 -right-2 w-full rounded-r-md border border-amber-200/30 bg-[#cbb58a] shadow-lg transition-transform duration-500 group-hover:translate-x-2" />
@@ -253,7 +419,7 @@ function Hero() {
                 <div className="absolute inset-y-1 -right-1 w-full rounded-r-md border border-amber-200/30 bg-[#e5d2a8]" />
 
                 {/* Book cover */}
-                <div className="relative flex min-h-[390px] flex-col overflow-hidden rounded-r-md border border-amber-400/40 bg-gradient-to-br from-[#38230f] via-[#1b120c] to-[#09090d] shadow-[10px_15px_35px_rgba(0,0,0,0.55),0_0_25px_rgba(245,158,11,0.05)] transition-all duration-700 group-hover:-translate-y-3 group-hover:rotate-[-2deg] group-hover:shadow-[15px_25px_45px_rgba(0,0,0,0.7),0_0_35px_rgba(245,158,11,0.15)]">
+                <div className="relative flex min-h-[390px] flex-col overflow-hidden rounded-r-md border border-amber-400/40 bg-gradient-to-br from-[#38230f] via-[#1b120c] to-[#09090d] shadow-[10px_15px_35px_rgba(0,0,0,0.55),0_0_25px_rgba(245,158,11,0.05)] transition-all duration-700 group-hover:shadow-[15px_25px_45px_rgba(0,0,0,0.7),0_0_35px_rgba(245,158,11,0.15)]">
                   {/* Book spine */}
                   <div className="absolute inset-y-0 left-0 z-20 w-5 border-r border-amber-400/30 bg-gradient-to-r from-[#080706] via-[#291a0d] to-[#17100a]" />
 
@@ -262,7 +428,15 @@ function Hero() {
                   <div className="pointer-events-none absolute inset-5 border border-amber-200/10" />
 
                   {/* Ambient glow */}
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-500/[0.10] blur-[70px] transition-all duration-500 group-hover:bg-amber-400/[0.20]" />
+                  <motion.div
+                    className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-500/[0.10] blur-[70px]"
+                    whileHover={
+                      shouldReduceMotion
+                        ? {}
+                        : { opacity: 1, scale: 1.3 }
+                    }
+                    transition={{ duration: 0.5 }}
+                  />
 
                   {/* Book content */}
                   <div className="relative z-10 flex flex-1 flex-col items-center px-7 pb-7 pl-9 pt-9 text-center">
@@ -272,19 +446,35 @@ function Hero() {
                         VOL. {zone.id}
                       </span>
 
-                      <span className="text-lg text-amber-400/80 transition-transform duration-500 group-hover:rotate-45">
+                      <motion.span
+                        className="text-lg text-amber-400/80"
+                        whileHover={
+                          shouldReduceMotion ? {} : { rotate: 90, scale: 1.2 }
+                        }
+                        transition={{ type: "spring", stiffness: 200 }}
+                      >
                         ✦
-                      </span>
+                      </motion.span>
                     </div>
 
                     {/* Decorative symbol */}
-                    <div className="my-8 flex h-28 w-28 items-center justify-center rounded-full border border-amber-400/30 transition-all duration-700 group-hover:scale-110 group-hover:border-amber-300/70 group-hover:shadow-[0_0_35px_rgba(245,158,11,0.18)]">
+                    <motion.div
+                      className="my-8 flex h-28 w-28 items-center justify-center rounded-full border border-amber-400/30 transition-all duration-700 group-hover:border-amber-300/70 group-hover:shadow-[0_0_35px_rgba(245,158,11,0.18)]"
+                      whileHover={
+                        shouldReduceMotion ? {} : { scale: 1.1, rotate: 8 }
+                      }
+                      transition={{
+                        type: "spring",
+                        stiffness: 180,
+                        damping: 12,
+                      }}
+                    >
                       <div className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-amber-400/30">
                         <span className="font-serif text-5xl text-amber-300">
                           {zone.symbol}
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Genre */}
                     <span className="font-mono text-[9px] tracking-[0.3em] text-amber-400/75">
@@ -313,9 +503,14 @@ function Hero() {
                         OPEN THE BOOK
                       </span>
 
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-amber-400/30 text-amber-300 transition-all duration-300 group-hover:translate-x-1 group-hover:border-amber-300 group-hover:bg-amber-400/10">
+                      <motion.span
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-amber-400/30 text-amber-300 transition-colors duration-300 group-hover:border-amber-300 group-hover:bg-amber-400/10"
+                        whileHover={
+                          shouldReduceMotion ? {} : { x: 5, y: -3 }
+                        }
+                      >
                         ↗
-                      </span>
+                      </motion.span>
                     </div>
                   </div>
 
@@ -324,13 +519,19 @@ function Hero() {
                     ✦
                   </div>
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
 
-          <p className="mt-7 text-center font-mono text-[10px] tracking-[0.25em] text-amber-100/30">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-7 text-center font-mono text-[10px] tracking-[0.25em] text-amber-100/30"
+          >
             04 WORLDS / INFINITE STORIES
-          </p>
+          </motion.p>
         </section>
       </div>
     </section>
