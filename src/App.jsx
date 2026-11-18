@@ -1,24 +1,38 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import StoryCreator from "./components/StoryCreator";
-import About from "./components/About";
-import MyStorie from "./components/MyStorie";
-import HowItWorks from "./components/HowItWorks";
-import Footer from "./components/Footer";
 
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import StoryCreator from "./components/StoryCreator.jsx";
+import About from "./components/About.jsx";
+import MyStories from "./components/MyStories.jsx";
+import HowItWorks from "./components/HowItWorks.jsx";
+import Footer from "./components/Footer.jsx";
+import StoryResult from "./pages/StoryResult.jsx";
+
+function Home() {
   return (
     <>
       <Navbar />
       <Hero />
       <StoryCreator />
       <About />
-      <MyStorie />
+      <MyStories />
       <HowItWorks />
       <Footer />
     </>
   );
 }
 
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/story" element={<StoryResult />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App;

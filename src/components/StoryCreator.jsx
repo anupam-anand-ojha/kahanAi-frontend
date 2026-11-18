@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const API_URL =
   import.meta.env.VITE_API_URL || "http://localhost:8000";
@@ -37,10 +37,11 @@ const initialForm = {
 };
 
 function StoryCreator() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [generatedStory, setGeneratedStory] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,9 +54,7 @@ function StoryCreator() {
 
   const handleGenerate = async (e) => {
     e.preventDefault();
-
     setError("");
-    setGeneratedStory(null);
 
     if (!form.theme.trim()) {
       setError("Please enter a story theme first.");
@@ -88,36 +87,21 @@ function StoryCreator() {
         throw new Error("Story was not received from the server.");
       }
 
-      setGeneratedStory(result.data);
-
-      setTimeout(() => {
-        document
-          .getElementById("generated-story")
-          ?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-      }, 100);
+      // Open the generated story on a separate page.
+      navigate("/story", {
+        state: {
+          story: result.data,
+        },
+      });
     } catch (err) {
       console.error("Story generation error:", err);
 
       setError(
-        err.message ||
-          "Something went wrong. Please try again."
+        err.message || "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleCreateAnother = () => {
-    setGeneratedStory(null);
-    setError("");
-    setForm(initialForm);
-
-    document
-      .getElementById("create")
-      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -313,41 +297,6 @@ function StoryCreator() {
             POWERED BY KAHANAI STORY ENGINE
           </p>
         </form>
-
-        {generatedStory && (
-          <motion.article
-            id="generated-story"
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mx-auto mt-16 max-w-4xl border border-amber-500/25 bg-[#17120f] p-7 sm:p-12"
-          >
-            <div className="mb-7 text-center">
-              <span className="font-mono text-[10px] tracking-[0.3em] text-amber-400">
-                {generatedStory.genre || form.genre} REALM
-              </span>
-
-              <h2 className="mt-5 font-serif text-3xl italic leading-tight text-amber-200 sm:text-5xl">
-                {generatedStory.title || "A New Tale Begins"}
-              </h2>
-
-              <div className="mx-auto mt-6 h-px w-24 bg-amber-400/50" />
-            </div>
-
-            <div className="whitespace-pre-wrap font-serif text-base leading-8 text-[#e4d8c5]/80 sm:text-lg sm:leading-9">
-              {generatedStory.story}
-            </div>
-
-            <div className="mt-10 border-t border-amber-500/20 pt-6 text-center">
-              <button
-                type="button"
-                onClick={handleCreateAnother}
-                className="btn btn-outline rounded-none border-amber-500/40 text-amber-300 hover:border-amber-300 hover:bg-amber-500/10"
-              >
-                Create Another Story ↗
-              </button>
-            </div>
-          </motion.article>
-        )}
       </div>
     </section>
   );
