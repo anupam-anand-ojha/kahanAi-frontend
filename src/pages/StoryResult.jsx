@@ -1,143 +1,90 @@
 
+import { useLocation, useNavigate } from "react-router-dom";
+
 function StoryResult() {
-  const story = {
-    title: "The Kingdom of Forgotten Souls",
-    zone: "FANTASY REALM",
-    chapter: "CHAPTER I — THE AWAKENING",
-    content: [
-      "Beyond the mountains where sunlight had long forgotten to shine, there existed a kingdom hidden from the eyes of the living.",
-      "Its towers touched the clouds, its rivers whispered ancient secrets, and its forests remembered every soul that had ever walked beneath their shadows.",
-      "One evening, a mysterious light appeared above the abandoned throne. Somewhere in the darkness, an ancient prophecy was beginning to awaken.",
-    ],
-  };
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const storyData = location.state?.story;
+
+  if (!storyData?.story) {
+    return (
+      <main className="min-h-screen bg-[#09090d] px-6 py-24 text-center text-[#eee8dc]">
+        <p className="font-mono text-xs tracking-[0.3em] text-amber-400">
+          THE STORY ARCHIVE
+        </p>
+
+        <h1 className="mt-6 font-serif text-3xl">
+          No story found
+        </h1>
+
+        <p className="mt-4 text-sm text-[#c5b9a5]/60">
+          Create a new story to begin your journey.
+        </p>
+
+        <button
+          onClick={() => navigate("/")}
+          className="btn mt-8 rounded-none border-amber-400/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20"
+        >
+          Back to KahanAI
+        </button>
+      </main>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-[#09090d] text-[#eee8dc]">
+    <main className="relative min-h-screen overflow-hidden bg-[#09090d] px-5 py-12 text-[#eee8dc] sm:px-8 sm:py-20">
+      <div className="pointer-events-none absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-amber-600/[0.07] blur-[120px]" />
 
-      {/* Navigation */}
-      <div className="navbar border-b border-white/10 px-5 md:px-12">
-        <div className="navbar-start">
-          <a href="/" className="btn btn-ghost text-xl font-black">
-            <span className="text-amber-400">✦</span>
-            Kahan<span className="text-amber-400">AI</span>
-          </a>
+      <article className="relative mx-auto max-w-4xl border border-amber-500/20 bg-[#11100f] px-6 py-10 shadow-2xl sm:px-14 sm:py-16">
+        <div className="mb-10 flex items-center justify-between border-b border-amber-500/20 pb-5">
+          <button
+            onClick={() => navigate("/")}
+            className="font-serif text-lg text-amber-200 hover:text-amber-400"
+          >
+            KahanAI
+          </button>
+
+          <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/60">
+            THE STORY ARCHIVE
+          </span>
         </div>
 
-        <div className="navbar-end">
-          <a href="/#create" className="btn btn-outline btn-sm border-white/20">
-            Create New Story ↗
-          </a>
-        </div>
-      </div>
+        <div className="text-center">
+          <p className="font-mono text-xs tracking-[0.3em] text-amber-400">
+            {storyData.genre || "A NEW STORY"} REALM
+          </p>
 
-      {/* Cinematic Cover */}
-      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#302019] via-[#171117] to-[#09090d] px-5 py-20">
-
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(180,110,45,0.18),transparent_65%)]" />
-
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-
-          <div className="badge badge-outline mb-8 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
-            {story.zone}
-          </div>
-
-          <div className="mb-8 text-7xl text-amber-400/80">
-            ✧
-          </div>
-
-          <h1 className="font-serif text-5xl font-bold leading-tight tracking-wide md:text-7xl">
-            {story.title}
+          <h1 className="mt-6 font-serif text-3xl italic leading-tight text-amber-100 sm:text-5xl">
+            {storyData.title || "A New Tale Begins"}
           </h1>
 
-          <div className="divider mx-auto my-8 max-w-xs before:bg-amber-400/30 after:bg-amber-400/30">
-            <span className="text-amber-400">✦</span>
-          </div>
+          <div className="mx-auto my-8 h-px w-24 bg-amber-400/50" />
 
-          <p className="font-mono text-xs tracking-[0.35em] text-amber-200/60">
-            {story.chapter}
+          <p className="text-xs leading-6 text-[#c5b9a5]/50">
+            {storyData.theme}
           </p>
-
         </div>
 
-        <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.3em] text-white/30">
-          SCROLL TO READ ↓
-        </span>
-      </section>
+        <div className="my-12 border-t border-amber-500/10" />
 
-      {/* Reading Area */}
-      <section className="px-5 py-20 md:px-10">
-        <div className="mx-auto max-w-3xl">
-
-          <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-5">
-            <span className="font-mono text-xs tracking-widest text-amber-300/70">
-              THE STORY BEGINS
-            </span>
-
-            <span className="badge badge-ghost text-white/50">
-              ✧ Original Story
-            </span>
-          </div>
-
-          <article className="space-y-8">
-            {story.content.map((paragraph, index) => (
-              <p
-                key={index}
-                className={`font-serif text-lg leading-10 text-[#d5ccbd] md:text-xl md:leading-[2.4] ${
-                  index === 0
-                    ? "first-letter:float-left first-letter:mr-4 first-letter:text-7xl first-letter:font-bold first-letter:text-amber-400"
-                    : ""
-                }`}
-              >
-                {paragraph}
-              </p>
-            ))}
-          </article>
-
-          <div className="divider my-16 before:bg-white/10 after:bg-white/10">
-            <span className="text-amber-400">✦ ✦ ✦</span>
-          </div>
-
-          <div className="text-center">
-            <p className="font-serif text-2xl italic text-amber-200/70">
-              "Every ending is a beginning in disguise."
-            </p>
-          </div>
-
+        <div className="whitespace-pre-wrap font-serif text-base leading-9 text-[#e4d8c5]/85 sm:text-lg sm:leading-10">
+          {storyData.story}
         </div>
-      </section>
 
-      {/* Bottom Actions */}
-      <section className="border-t border-white/10 bg-[#111016] px-5 py-16">
-        <div className="mx-auto max-w-3xl text-center">
-
-          <div className="mb-5 text-4xl text-amber-400">✧</div>
-
-          <h2 className="font-serif text-3xl font-bold md:text-4xl">
-            Another world awaits.
-          </h2>
-
-          <p className="mt-4 text-sm text-white/50">
-            Your imagination has no final chapter.
+        <div className="mt-16 border-t border-amber-500/20 pt-8 text-center">
+          <p className="mb-6 font-serif text-lg italic text-amber-200/60">
+            Every ending is another beginning.
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="/#create" className="btn border-amber-400 bg-amber-400 text-black hover:bg-amber-300">
-              ✦ Create Another Story
-            </a>
-
-            <a href="/#library" className="btn btn-outline border-white/20 text-white hover:bg-white/10">
-              My Stories
-            </a>
-          </div>
-
-          <p className="mt-12 font-mono text-[10px] tracking-[0.3em] text-white/25">
-            KAHANAI — WHERE STORIES COME ALIVE
-          </p>
-          
-
+          <button
+            onClick={() => navigate("/")}
+            className="btn rounded-none border border-amber-400/50 bg-amber-500/10 px-8 text-amber-200 hover:bg-amber-500/20"
+          >
+            Create Another Story ↗
+          </button>
         </div>
-      </section>
-
+      </article>
     </main>
   );
 }
