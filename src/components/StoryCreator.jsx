@@ -2,32 +2,58 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 const genres = [
-  { name: "Fantasy", symbol: "✧", description: "Magic, kingdoms & mythical worlds" },
-  { name: "Horror", symbol: "☾", description: "Dark secrets & haunting mysteries" },
-  { name: "Sci-Fi", symbol: "⌘", description: "Future worlds & technology" },
-  { name: "Adventure", symbol: "⟁", description: "Quests, discoveries & exploration" },
+  {
+    name: "Fantasy",
+    symbol: "✧",
+    description: "Magic, kingdoms & mythical worlds",
+  },
+  {
+    name: "Horror",
+    symbol: "☾",
+    description: "Dark secrets & haunting mysteries",
+  },
+  {
+    name: "Sci-Fi",
+    symbol: "⌘",
+    description: "Future worlds & technology",
+  },
+  {
+    name: "Adventure",
+    symbol: "⟁",
+    description: "Quests, discoveries & exploration",
+  },
 ];
 
-function StoryCreator() {
-  const [form, setForm] = useState({
-    genre: "Fantasy",
-    theme: "",
-    characters: "",
-    language: "English",
-    mood: "Mysterious",
-  });
+const initialForm = {
+  genre: "Fantasy",
+  theme: "",
+  characters: "",
+  language: "English",
+  mood: "Mysterious",
+};
 
+function StoryCreator() {
+  const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [generatedStory, setGeneratedStory] = useState(null);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleGenerate = async (e) => {
     e.preventDefault();
+
     setError("");
     setGeneratedStory(null);
 
@@ -39,31 +65,59 @@ function StoryCreator() {
     setLoading(true);
 
     try {
-      const API_URL =
-        import.meta.env.VITE_API_URL || "http://localhost:8000";
-
-      const response = await fetch(`${API_URL}/api/stories/generate`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const response = await fetch(
+        `${API_URL}/api/stories/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
       const result = await response.json();
 
-      if (!response.ok) {
-        throw new Error(result.message || "Unable to generate story.");
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Unable to generate story."
+        );
+      }
+
+      if (!result.data?.story) {
+        throw new Error("Story was not received from the server.");
       }
 
       setGeneratedStory(result.data);
+
+      setTimeout(() => {
+        document
+          .getElementById("generated-story")
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+      }, 100);
     } catch (err) {
+      console.error("Story generation error:", err);
+
       setError(
-        err.message || "Something went wrong. Please try again."
+        err.message ||
+          "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCreateAnother = () => {
+    setGeneratedStory(null);
+    setError("");
+    setForm(initialForm);
+
+    document
+      .getElementById("create")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -100,6 +154,7 @@ function StoryCreator() {
             <span className="font-serif text-xl text-amber-200">
               The Story Blueprint
             </span>
+
             <span className="font-mono text-[10px] tracking-widest text-amber-400/50">
               CHAPTER 01
             </span>
@@ -115,7 +170,10 @@ function StoryCreator() {
                 key={genre.name}
                 type="button"
                 onClick={() =>
-                  setForm({ ...form, genre: genre.name })
+                  setForm((prev) => ({
+                    ...prev,
+                    genre: genre.name,
+                  }))
                 }
                 className={`border p-4 text-left transition-all ${
                   form.genre === genre.name
@@ -126,9 +184,11 @@ function StoryCreator() {
                 <span className="text-2xl text-amber-300">
                   {genre.symbol}
                 </span>
+
                 <span className="mt-3 block font-serif text-lg">
                   {genre.name}
                 </span>
+
                 <span className="mt-1 block text-[11px] leading-5 text-[#c5b9a5]/45">
                   {genre.description}
                 </span>
@@ -143,6 +203,7 @@ function StoryCreator() {
             >
               02 — WHAT IS YOUR STORY ABOUT?
             </label>
+
             <textarea
               id="theme"
               name="theme"
@@ -166,6 +227,7 @@ function StoryCreator() {
                 (Optional)
               </span>
             </label>
+
             <input
               id="characters"
               name="characters"
@@ -186,6 +248,7 @@ function StoryCreator() {
               >
                 04 — STORY LANGUAGE
               </label>
+
               <select
                 id="language"
                 name="language"
@@ -206,6 +269,7 @@ function StoryCreator() {
               >
                 05 — STORY MOOD
               </label>
+
               <select
                 id="mood"
                 name="mood"
@@ -252,6 +316,7 @@ function StoryCreator() {
 
         {generatedStory && (
           <motion.article
+            id="generated-story"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             className="mx-auto mt-16 max-w-4xl border border-amber-500/25 bg-[#17120f] p-7 sm:p-12"
@@ -262,7 +327,7 @@ function StoryCreator() {
               </span>
 
               <h2 className="mt-5 font-serif text-3xl italic leading-tight text-amber-200 sm:text-5xl">
-                {generatedStory.title || "Your New Story"}
+                {generatedStory.title || "A New Tale Begins"}
               </h2>
 
               <div className="mx-auto mt-6 h-px w-24 bg-amber-400/50" />
@@ -275,19 +340,7 @@ function StoryCreator() {
             <div className="mt-10 border-t border-amber-500/20 pt-6 text-center">
               <button
                 type="button"
-                onClick={() => {
-                  setGeneratedStory(null);
-                  setForm({
-                    genre: "Fantasy",
-                    theme: "",
-                    characters: "",
-                    language: "English",
-                    mood: "Mysterious",
-                  });
-                  document
-                    .getElementById("create")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={handleCreateAnother}
                 className="btn btn-outline rounded-none border-amber-500/40 text-amber-300 hover:border-amber-300 hover:bg-amber-500/10"
               >
                 Create Another Story ↗

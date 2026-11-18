@@ -220,4 +220,4 @@ function MyStories() {
   );
 }
 
-export default MyStories;
+export default MyStorie;
