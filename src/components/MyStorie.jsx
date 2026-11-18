@@ -25,7 +25,7 @@ const stories = [
   },
 ];
 
-function MyStories() {
+function MyStorie() {
   return (
     <section
       id="library"
@@ -174,6 +174,7 @@ function MyStories() {
                   <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/50">
                     STORY CONCEPT
                   </span>
+                  
 
                   <button
                     type="button"
