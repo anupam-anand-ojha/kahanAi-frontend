@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import StoryCreator from "./components/StoryCreator.jsx";
 import About from "./components/About.jsx";
-import MyStories from "./components/MyStories.jsx";
+import MyStorie from "./components/MyStorie.jsx";
 import HowItWorks from "./components/HowItWorks.jsx";
 import Footer from "./components/Footer.jsx";
 import StoryResult from "./pages/StoryResult.jsx";
@@ -17,7 +17,7 @@ function Home() {
       <Hero />
       <StoryCreator />
       <About />
-      <MyStories />
+      <MyStorie />
       <HowItWorks />
       <Footer />
     </>
