@@ -42,7 +42,7 @@ function StoryResult() {
             onClick={() => navigate("/")}
             className="font-serif text-lg text-amber-200 hover:text-amber-400"
           >
-            KahanAI
+            Back to home
           </button>
 
           <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/60">
