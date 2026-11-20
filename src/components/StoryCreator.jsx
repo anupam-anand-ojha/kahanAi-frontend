@@ -299,7 +299,6 @@ function StoryCreator() {
         </form>
       </div>
     </section>
-    
   );
 }
 
