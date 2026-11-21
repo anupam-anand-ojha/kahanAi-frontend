@@ -22,7 +22,6 @@ function Navbar() {
     },
   ];
 
-  
   return (
     <div className="sticky top-0 z-50 w-full">
       <div className="group relative w-full">
