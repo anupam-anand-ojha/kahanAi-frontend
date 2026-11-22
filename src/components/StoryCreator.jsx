@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const genres = [
   { name: "Fantasy", symbol: "✧", detail: "Magic & mythical worlds" },
@@ -120,149 +118,155 @@ function StoryCreator() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-stone-500">
-            Every world begins with an idea. Choose your setting,
-            shape its characters, and let a new legend unfold.
+            Every world begins with an idea. Choose your setting, shape its
+            characters, and let a new legend unfold.
           </p>
         </motion.div>
 
         {/* Main studio */}
         <div className="grid items-stretch gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-
           {/* LEFT: Book preview */}
-          
-<motion.aside
-  initial={{ opacity: 0, x: -30 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8 }}
-  className="relative flex min-h-[680px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#9b7545]/20 bg-[#0d0b0a] px-5 py-12"
->
-  {/* Background atmosphere */}
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(130,75,35,0.2),transparent_65%)]" />
-  <div className="pointer-events-none absolute bottom-10 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-700/10 blur-[90px]" />
 
-  <div className="relative z-10 mb-12 text-center">
-    <p className="text-[9px] font-semibold tracking-[0.55em] text-[#b58b52]">
-      KAHANAI PUBLISHING HOUSE
-    </p>
-    <h3 className="mt-4 font-serif text-3xl text-[#ead8b8]">
-      The Art of Imagination
-    </h3>
-    <p className="mt-2 text-[11px] tracking-widest text-stone-500">
-      YOUR STORY • YOUR UNIVERSE
-    </p>
-  </div>
+          <motion.aside
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative flex min-h-[680px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#9b7545]/20 bg-[#0d0b0a] px-5 py-12"
+          >
+            {/* Background atmosphere */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(130,75,35,0.2),transparent_65%)]" />
+            <div className="pointer-events-none absolute bottom-10 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-700/10 blur-[90px]" />
 
-  {/* 3D book */}
-  <div className="relative z-10 w-full max-w-[330px] [perspective:1600px]">
-    <motion.div
-      whileHover={{ rotateY: -18, rotateX: 4, y: -10 }}
-      transition={{ type: "spring", stiffness: 110, damping: 15 }}
-      className="relative mx-auto aspect-[0.69] w-[80%] [transform-style:preserve-3d]"
-    >
-      {/* Thick page edges */}
-      <div className="absolute -right-[15px] top-3 h-[calc(100%-24px)] w-5 rounded-r-md border-y border-r border-[#b7a17a] bg-[repeating-linear-gradient(to_bottom,#f2e7cf_0px,#f2e7cf_2px,#c9b995_3px,#f2e7cf_4px)] shadow-[8px_8px_15px_rgba(0,0,0,0.5)]" />
-      <div className="absolute -right-2 top-2 h-[calc(100%-16px)] w-3 rounded-r-sm bg-[#d8c7a5]" />
-
-      {/* Spine */}
-      <div className="absolute -left-5 top-0 z-20 h-full w-8 rounded-l-lg border-r border-[#c39a5b]/50 bg-gradient-to-r from-[#170d0c] via-[#603322] to-[#2a1712] shadow-[-10px_10px_20px_rgba(0,0,0,0.6)]">
-        <div className="absolute left-2 top-5 h-[calc(100%-40px)] w-px bg-[#d5ae70]/50" />
-        <div className="absolute left-0 top-[18%] h-px w-full bg-[#d5ae70]/50" />
-        <div className="absolute left-0 bottom-[18%] h-px w-full bg-[#d5ae70]/50" />
-      </div>
-
-      {/* Cover */}
-      <div className="relative h-full w-full overflow-hidden rounded-r-md rounded-l-sm border border-[#c69c5b]/70 bg-[linear-gradient(125deg,#572c26_0%,#321a18_42%,#211311_100%)] shadow-[20px_28px_40px_rgba(0,0,0,0.7)]">
-        {/* Leather grain */}
-        <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(#e0b87a_0.65px,transparent_0.8px)] [background-size:4px_4px]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/50" />
-
-        {/* Foil border */}
-        <div className="absolute inset-3 border border-[#d8b77c]/80" />
-        <div className="absolute inset-[17px] border border-[#d8b77c]/25" />
-
-        {/* Decorative corners */}
-        <span className="absolute left-5 top-4 font-serif text-2xl text-[#d7b477]">❧</span>
-        <span className="absolute right-5 top-4 rotate-90 font-serif text-2xl text-[#d7b477]">❧</span>
-        <span className="absolute bottom-4 left-5 -rotate-90 font-serif text-2xl text-[#d7b477]">❧</span>
-        <span className="absolute bottom-4 right-5 rotate-180 font-serif text-2xl text-[#d7b477]">❧</span>
-
-        <div className="relative flex h-full flex-col items-center justify-between px-7 py-9 text-center">
-          {/* Edition */}
-          <div>
-            <p className="text-[8px] tracking-[0.48em] text-[#e1c28e]">
-              THE FIRST EDITION
-            </p>
-            <div className="mx-auto mt-4 h-px w-12 bg-[#d8b77c]/70" />
-          </div>
-
-          {/* Emblem and title */}
-          <div className="flex flex-1 flex-col items-center justify-center">
-            <div className="relative mb-6 flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#d8b77c]/70 shadow-[0_0_25px_rgba(216,183,124,0.12)]">
-              <div className="absolute inset-2 rounded-full border border-[#d8b77c]/30" />
-              <span className="font-serif text-5xl text-[#edcf98] drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                {selectedGenre.symbol}
-              </span>
+            <div className="relative z-10 mb-12 text-center">
+              <p className="text-[9px] font-semibold tracking-[0.55em] text-[#b58b52]">
+                KAHANAI PUBLISHING HOUSE
+              </p>
+              <h3 className="mt-4 font-serif text-3xl text-[#ead8b8]">
+                The Art of Imagination
+              </h3>
+              <p className="mt-2 text-[11px] tracking-widest text-stone-500">
+                YOUR STORY • YOUR UNIVERSE
+              </p>
             </div>
 
-            <p className="mb-4 text-[8px] tracking-[0.4em] text-[#cba66d]">
-              A {form.genre.toUpperCase()} COLLECTION
-            </p>
-
-            <AnimatePresence mode="wait">
-              <motion.h2
-                key={form.theme || "untitled"}
-                initial={{ opacity: 0, y: 12, filter: "blur(5px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35 }}
-                className="line-clamp-3 font-serif text-[32px] leading-[1.15] text-[#f3e5c9] drop-shadow-lg"
+            {/* 3D book */}
+            <div className="relative z-10 w-full max-w-[330px] [perspective:1600px]">
+              <motion.div
+                whileHover={{ rotateY: -18, rotateX: 4, y: -10 }}
+                transition={{ type: "spring", stiffness: 110, damping: 15 }}
+                className="relative mx-auto aspect-[0.69] w-[80%] [transform-style:preserve-3d]"
               >
-                {form.theme.trim() || "The Untold Story"}
-              </motion.h2>
-            </AnimatePresence>
+                {/* Thick page edges */}
+                <div className="absolute -right-[15px] top-3 h-[calc(100%-24px)] w-5 rounded-r-md border-y border-r border-[#b7a17a] bg-[repeating-linear-gradient(to_bottom,#f2e7cf_0px,#f2e7cf_2px,#c9b995_3px,#f2e7cf_4px)] shadow-[8px_8px_15px_rgba(0,0,0,0.5)]" />
+                <div className="absolute -right-2 top-2 h-[calc(100%-16px)] w-3 rounded-r-sm bg-[#d8c7a5]" />
 
-            <div className="my-5 flex items-center gap-3">
-              <div className="h-px w-8 bg-[#cba66d]/60" />
-              <span className="text-xs text-[#e0bf85]">✦</span>
-              <div className="h-px w-8 bg-[#cba66d]/60" />
+                {/* Spine */}
+                <div className="absolute -left-5 top-0 z-20 h-full w-8 rounded-l-lg border-r border-[#c39a5b]/50 bg-gradient-to-r from-[#170d0c] via-[#603322] to-[#2a1712] shadow-[-10px_10px_20px_rgba(0,0,0,0.6)]">
+                  <div className="absolute left-2 top-5 h-[calc(100%-40px)] w-px bg-[#d5ae70]/50" />
+                  <div className="absolute left-0 top-[18%] h-px w-full bg-[#d5ae70]/50" />
+                  <div className="absolute left-0 bottom-[18%] h-px w-full bg-[#d5ae70]/50" />
+                </div>
+
+                {/* Cover */}
+                <div className="relative h-full w-full overflow-hidden rounded-r-md rounded-l-sm border border-[#c69c5b]/70 bg-[linear-gradient(125deg,#572c26_0%,#321a18_42%,#211311_100%)] shadow-[20px_28px_40px_rgba(0,0,0,0.7)]">
+                  {/* Leather grain */}
+                  <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(#e0b87a_0.65px,transparent_0.8px)] [background-size:4px_4px]" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/50" />
+
+                  {/* Foil border */}
+                  <div className="absolute inset-3 border border-[#d8b77c]/80" />
+                  <div className="absolute inset-[17px] border border-[#d8b77c]/25" />
+
+                  {/* Decorative corners */}
+                  <span className="absolute left-5 top-4 font-serif text-2xl text-[#d7b477]">
+                    ❧
+                  </span>
+                  <span className="absolute right-5 top-4 rotate-90 font-serif text-2xl text-[#d7b477]">
+                    ❧
+                  </span>
+                  <span className="absolute bottom-4 left-5 -rotate-90 font-serif text-2xl text-[#d7b477]">
+                    ❧
+                  </span>
+                  <span className="absolute bottom-4 right-5 rotate-180 font-serif text-2xl text-[#d7b477]">
+                    ❧
+                  </span>
+
+                  <div className="relative flex h-full flex-col items-center justify-between px-7 py-9 text-center">
+                    {/* Edition */}
+                    <div>
+                      <p className="text-[8px] tracking-[0.48em] text-[#e1c28e]">
+                        THE FIRST EDITION
+                      </p>
+                      <div className="mx-auto mt-4 h-px w-12 bg-[#d8b77c]/70" />
+                    </div>
+
+                    {/* Emblem and title */}
+                    <div className="flex flex-1 flex-col items-center justify-center">
+                      <div className="relative mb-6 flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#d8b77c]/70 shadow-[0_0_25px_rgba(216,183,124,0.12)]">
+                        <div className="absolute inset-2 rounded-full border border-[#d8b77c]/30" />
+                        <span className="font-serif text-5xl text-[#edcf98] drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                          {selectedGenre.symbol}
+                        </span>
+                      </div>
+
+                      <p className="mb-4 text-[8px] tracking-[0.4em] text-[#cba66d]">
+                        A {form.genre.toUpperCase()} COLLECTION
+                      </p>
+
+                      <AnimatePresence mode="wait">
+                        <motion.h2
+                          key={form.theme || "untitled"}
+                          initial={{ opacity: 0, y: 12, filter: "blur(5px)" }}
+                          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.35 }}
+                          className="line-clamp-3 font-serif text-[32px] leading-[1.15] text-[#f3e5c9] drop-shadow-lg"
+                        >
+                          {form.theme.trim() || "The Untold Story"}
+                        </motion.h2>
+                      </AnimatePresence>
+
+                      <div className="my-5 flex items-center gap-3">
+                        <div className="h-px w-8 bg-[#cba66d]/60" />
+                        <span className="text-xs text-[#e0bf85]">✦</span>
+                        <div className="h-px w-8 bg-[#cba66d]/60" />
+                      </div>
+
+                      <p className="font-serif text-sm italic text-[#d7bd94]">
+                        {form.mood || "A mysterious journey"}
+                      </p>
+                    </div>
+
+                    {/* Publisher details */}
+                    <div className="w-full">
+                      <p className="text-[8px] tracking-[0.35em] text-[#cba66d]">
+                        THE LANGUAGE OF THIS TALE
+                      </p>
+                      <p className="mt-2 font-serif text-sm text-[#f0dfbd]">
+                        {form.language}
+                      </p>
+                      <div className="mx-auto mt-4 h-px w-10 bg-[#d8b77c]/60" />
+                      <p className="mt-3 text-[8px] tracking-[0.4em] text-[#cba66d]">
+                        KAHANAI • MMXXVI
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ribbon bookmark */}
+                <div className="absolute -right-1 top-0 z-30 h-20 w-4 bg-gradient-to-b from-[#d8b477] to-[#86552c] shadow-md [clip-path:polygon(0_0,100%_0,100%_100%,50%_82%,0_100%)]" />
+              </motion.div>
             </div>
 
-            <p className="font-serif text-sm italic text-[#d7bd94]">
-              {form.mood || "A mysterious journey"}
-            </p>
-          </div>
-
-          {/* Publisher details */}
-          <div className="w-full">
-            <p className="text-[8px] tracking-[0.35em] text-[#cba66d]">
-              THE LANGUAGE OF THIS TALE
-            </p>
-            <p className="mt-2 font-serif text-sm text-[#f0dfbd]">
-              {form.language}
-            </p>
-            <div className="mx-auto mt-4 h-px w-10 bg-[#d8b77c]/60" />
-            <p className="mt-3 text-[8px] tracking-[0.4em] text-[#cba66d]">
-              KAHANAI • MMXXVI
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Ribbon bookmark */}
-      <div className="absolute -right-1 top-0 z-30 h-20 w-4 bg-gradient-to-b from-[#d8b477] to-[#86552c] shadow-md [clip-path:polygon(0_0,100%_0,100%_100%,50%_82%,0_100%)]" />
-    </motion.div>
-  </div>
-
-  <div className="relative z-10 mt-14 text-center">
-    <p className="font-serif text-lg italic text-[#d8c29e]">
-      Not just a story. A world of your own.
-    </p>
-    <p className="mt-3 text-[8px] tracking-[0.45em] text-stone-600">
-      IMAGINED • WRITTEN • REMEMBERED
-    </p>
-  </div>
-</motion.aside>
-
+            <div className="relative z-10 mt-14 text-center">
+              <p className="font-serif text-lg italic text-[#d8c29e]">
+                Not just a story. A world of your own.
+              </p>
+              <p className="mt-3 text-[8px] tracking-[0.45em] text-stone-600">
+                IMAGINED • WRITTEN • REMEMBERED
+              </p>
+            </div>
+          </motion.aside>
 
           {/* RIGHT: Form */}
           <motion.form
@@ -290,7 +294,6 @@ function StoryCreator() {
             </div>
 
             <div className="space-y-8 p-6 sm:p-9">
-
               {/* Genre */}
               <div>
                 <div className="mb-4 flex items-center justify-between">
