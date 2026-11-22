@@ -130,134 +130,135 @@ function StoryCreator() {
 
           {/* LEFT: Book preview */}
           
-{/* LEFT: 3D Antique Storybook */}
 <motion.aside
-  initial={{ opacity: 0, x: -35, rotateY: 8 }}
-  whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.9 }}
-  className="relative flex min-h-[620px] items-center justify-center overflow-hidden border border-amber-500/10 bg-[#0c0b0a] px-5 py-14 sm:px-10"
+  initial={{ opacity: 0, x: -30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  className="relative flex min-h-[680px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#9b7545]/20 bg-[#0d0b0a] px-5 py-12"
 >
-  {/* Ambient glow */}
-  <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-600/[0.09] blur-[100px]" />
+  {/* Background atmosphere */}
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(130,75,35,0.2),transparent_65%)]" />
+  <div className="pointer-events-none absolute bottom-10 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-700/10 blur-[90px]" />
 
-  <div className="relative w-full max-w-[310px] [perspective:1400px]">
+  <div className="relative z-10 mb-12 text-center">
+    <p className="text-[9px] font-semibold tracking-[0.55em] text-[#b58b52]">
+      KAHANAI PUBLISHING HOUSE
+    </p>
+    <h3 className="mt-4 font-serif text-3xl text-[#ead8b8]">
+      The Art of Imagination
+    </h3>
+    <p className="mt-2 text-[11px] tracking-widest text-stone-500">
+      YOUR STORY • YOUR UNIVERSE
+    </p>
+  </div>
 
-    {/* Book shadow */}
-    <div className="absolute -bottom-8 left-8 right-0 h-12 rounded-[50%] bg-black/70 blur-xl" />
-
-    {/* Book pages */}
-    <div className="absolute -right-[13px] top-[9px] h-[98%] w-5 rounded-r-sm border-y border-r border-[#b69b6a] bg-[#c8b58e] shadow-[5px_4px_10px_rgba(0,0,0,0.4)]">
-      <div className="absolute inset-y-2 left-1 w-px bg-[#8e7956]/40" />
-      <div className="absolute inset-y-2 left-2 w-px bg-[#8e7956]/30" />
-      <div className="absolute inset-y-2 left-3 w-px bg-[#8e7956]/30" />
-    </div>
-
-    {/* Book spine */}
-    <div className="absolute -left-4 top-0 z-20 h-full w-7 rounded-l-md border border-[#8d682e] bg-gradient-to-r from-[#38210e] via-[#8b5b25] to-[#3a210f] shadow-[-8px_5px_15px_rgba(0,0,0,0.4)]">
-      <div className="absolute inset-y-3 left-2 w-px bg-amber-300/30" />
-      <div className="absolute inset-y-3 right-1 w-px bg-black/30" />
-      <div className="absolute left-0 top-10 h-px w-full bg-amber-300/30" />
-      <div className="absolute bottom-10 left-0 h-px w-full bg-amber-300/30" />
-    </div>
-
-    {/* Main cover */}
+  {/* 3D book */}
+  <div className="relative z-10 w-full max-w-[330px] [perspective:1600px]">
     <motion.div
-      whileHover={{ rotateY: -5, rotateX: 2, scale: 1.015 }}
-      transition={{ duration: 0.4 }}
-      className="relative z-10 aspect-[0.70] overflow-hidden rounded-r-md border border-[#c69a50]/70 bg-gradient-to-br from-[#563519] via-[#321d11] to-[#160e09] shadow-[12px_18px_35px_rgba(0,0,0,0.55)]"
-      style={{
-        transformStyle: "preserve-3d",
-        boxShadow:
-          "inset 5px 0 12px rgba(0,0,0,0.45), inset -2px 0 8px rgba(255,205,120,0.12), 15px 20px 35px rgba(0,0,0,0.55)",
-      }}
+      whileHover={{ rotateY: -18, rotateX: 4, y: -10 }}
+      transition={{ type: "spring", stiffness: 110, damping: 15 }}
+      className="relative mx-auto aspect-[0.69] w-[80%] [transform-style:preserve-3d]"
     >
-      {/* Leather texture / decorative glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(213,157,73,0.18),transparent_65%)]" />
+      {/* Thick page edges */}
+      <div className="absolute -right-[15px] top-3 h-[calc(100%-24px)] w-5 rounded-r-md border-y border-r border-[#b7a17a] bg-[repeating-linear-gradient(to_bottom,#f2e7cf_0px,#f2e7cf_2px,#c9b995_3px,#f2e7cf_4px)] shadow-[8px_8px_15px_rgba(0,0,0,0.5)]" />
+      <div className="absolute -right-2 top-2 h-[calc(100%-16px)] w-3 rounded-r-sm bg-[#d8c7a5]" />
 
-      {/* Outer golden frame */}
-      <div className="absolute inset-3 border border-[#d6aa62]/50" />
-      <div className="absolute inset-[18px] border border-[#d6aa62]/20" />
+      {/* Spine */}
+      <div className="absolute -left-5 top-0 z-20 h-full w-8 rounded-l-lg border-r border-[#c39a5b]/50 bg-gradient-to-r from-[#170d0c] via-[#603322] to-[#2a1712] shadow-[-10px_10px_20px_rgba(0,0,0,0.6)]">
+        <div className="absolute left-2 top-5 h-[calc(100%-40px)] w-px bg-[#d5ae70]/50" />
+        <div className="absolute left-0 top-[18%] h-px w-full bg-[#d5ae70]/50" />
+        <div className="absolute left-0 bottom-[18%] h-px w-full bg-[#d5ae70]/50" />
+      </div>
 
-      {/* Corner ornaments */}
-      <span className="absolute left-5 top-5 font-serif text-2xl text-amber-300/70">❧</span>
-      <span className="absolute right-5 top-5 rotate-90 font-serif text-2xl text-amber-300/70">❧</span>
-      <span className="absolute bottom-5 left-5 -rotate-90 font-serif text-2xl text-amber-300/70">❧</span>
-      <span className="absolute bottom-5 right-5 rotate-180 font-serif text-2xl text-amber-300/70">❧</span>
+      {/* Cover */}
+      <div className="relative h-full w-full overflow-hidden rounded-r-md rounded-l-sm border border-[#c69c5b]/70 bg-[linear-gradient(125deg,#572c26_0%,#321a18_42%,#211311_100%)] shadow-[20px_28px_40px_rgba(0,0,0,0.7)]">
+        {/* Leather grain */}
+        <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(#e0b87a_0.65px,transparent_0.8px)] [background-size:4px_4px]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/50" />
 
-      {/* Cover content */}
-      <div className="relative flex h-full flex-col items-center justify-between px-8 py-10 text-center sm:px-10 sm:py-12">
+        {/* Foil border */}
+        <div className="absolute inset-3 border border-[#d8b77c]/80" />
+        <div className="absolute inset-[17px] border border-[#d8b77c]/25" />
 
-        <div>
-          <p className="font-mono text-[8px] tracking-[0.4em] text-amber-200/70">
-            THE LIBRARY OF IMAGINATION
-          </p>
-          <div className="mx-auto mt-4 h-px w-16 bg-amber-300/40" />
-        </div>
+        {/* Decorative corners */}
+        <span className="absolute left-5 top-4 font-serif text-2xl text-[#d7b477]">❧</span>
+        <span className="absolute right-5 top-4 rotate-90 font-serif text-2xl text-[#d7b477]">❧</span>
+        <span className="absolute bottom-4 left-5 -rotate-90 font-serif text-2xl text-[#d7b477]">❧</span>
+        <span className="absolute bottom-4 right-5 rotate-180 font-serif text-2xl text-[#d7b477]">❧</span>
 
-        {/* Emblem */}
-        <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-amber-300/40">
-          <div className="absolute inset-2 rounded-full border border-amber-300/20" />
-          <div className="absolute inset-4 rounded-full border border-amber-300/20" />
-          <span className="font-serif text-6xl text-amber-300 drop-shadow-[0_0_15px_rgba(251,191,36,0.35)]">
-            {selectedGenre.symbol}
-          </span>
-        </div>
-
-        {/* Dynamic title */}
-        <div className="w-full">
-          <p className="font-mono text-[8px] tracking-[0.4em] text-amber-200/60">
-            {form.genre.toUpperCase()} · {form.mood.toUpperCase()}
-          </p>
-
-          <AnimatePresence mode="wait">
-            <motion.h3
-              key={form.theme || "empty"}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="mt-5 break-words font-serif text-3xl leading-tight text-[#f4dfb6] sm:text-4xl"
-            >
-              {form.theme.trim()
-                ? form.theme.trim().slice(0, 65) +
-                  (form.theme.trim().length > 65 ? "..." : "")
-                : "The Untold Chronicles"}
-            </motion.h3>
-          </AnimatePresence>
-
-          <div className="my-5 flex items-center justify-center gap-3 text-amber-300/70">
-            <span className="h-px w-8 bg-amber-300/40" />
-            ✦
-            <span className="h-px w-8 bg-amber-300/40" />
+        <div className="relative flex h-full flex-col items-center justify-between px-7 py-9 text-center">
+          {/* Edition */}
+          <div>
+            <p className="text-[8px] tracking-[0.48em] text-[#e1c28e]">
+              THE FIRST EDITION
+            </p>
+            <div className="mx-auto mt-4 h-px w-12 bg-[#d8b77c]/70" />
           </div>
 
-          <p className="font-serif text-sm italic tracking-wide text-amber-100/60">
-            A story waiting to be written
-          </p>
-        </div>
+          {/* Emblem and title */}
+          <div className="flex flex-1 flex-col items-center justify-center">
+            <div className="relative mb-6 flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#d8b77c]/70 shadow-[0_0_25px_rgba(216,183,124,0.12)]">
+              <div className="absolute inset-2 rounded-full border border-[#d8b77c]/30" />
+              <span className="font-serif text-5xl text-[#edcf98] drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                {selectedGenre.symbol}
+              </span>
+            </div>
 
-        <div className="w-full">
-          <div className="mx-auto mb-4 h-px w-20 bg-amber-300/30" />
-          <p className="font-mono text-[8px] tracking-[0.35em] text-amber-200/60">
-            KAHANAI EDITION
-          </p>
-          <p className="mt-2 font-serif text-xs italic text-amber-200/40">
-            Vol. I · {form.language}
-          </p>
+            <p className="mb-4 text-[8px] tracking-[0.4em] text-[#cba66d]">
+              A {form.genre.toUpperCase()} COLLECTION
+            </p>
+
+            <AnimatePresence mode="wait">
+              <motion.h2
+                key={form.theme || "untitled"}
+                initial={{ opacity: 0, y: 12, filter: "blur(5px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+                className="line-clamp-3 font-serif text-[32px] leading-[1.15] text-[#f3e5c9] drop-shadow-lg"
+              >
+                {form.theme.trim() || "The Untold Story"}
+              </motion.h2>
+            </AnimatePresence>
+
+            <div className="my-5 flex items-center gap-3">
+              <div className="h-px w-8 bg-[#cba66d]/60" />
+              <span className="text-xs text-[#e0bf85]">✦</span>
+              <div className="h-px w-8 bg-[#cba66d]/60" />
+            </div>
+
+            <p className="font-serif text-sm italic text-[#d7bd94]">
+              {form.mood || "A mysterious journey"}
+            </p>
+          </div>
+
+          {/* Publisher details */}
+          <div className="w-full">
+            <p className="text-[8px] tracking-[0.35em] text-[#cba66d]">
+              THE LANGUAGE OF THIS TALE
+            </p>
+            <p className="mt-2 font-serif text-sm text-[#f0dfbd]">
+              {form.language}
+            </p>
+            <div className="mx-auto mt-4 h-px w-10 bg-[#d8b77c]/60" />
+            <p className="mt-3 text-[8px] tracking-[0.4em] text-[#cba66d]">
+              KAHANAI • MMXXVI
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Cover shine */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/30 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-black/20 to-transparent" />
+      {/* Ribbon bookmark */}
+      <div className="absolute -right-1 top-0 z-30 h-20 w-4 bg-gradient-to-b from-[#d8b477] to-[#86552c] shadow-md [clip-path:polygon(0_0,100%_0,100%_100%,50%_82%,0_100%)]" />
     </motion.div>
   </div>
 
-  {/* Caption */}
-  <div className="absolute bottom-5 left-0 right-0 text-center">
-    <p className="font-mono text-[8px] tracking-[0.35em] text-amber-500/50">
-      EVERY BOOK HOLDS A DIFFERENT UNIVERSE
+  <div className="relative z-10 mt-14 text-center">
+    <p className="font-serif text-lg italic text-[#d8c29e]">
+      Not just a story. A world of your own.
+    </p>
+    <p className="mt-3 text-[8px] tracking-[0.45em] text-stone-600">
+      IMAGINED • WRITTEN • REMEMBERED
     </p>
   </div>
 </motion.aside>
