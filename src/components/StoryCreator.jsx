@@ -442,7 +442,7 @@ function StoryCreator() {
 
         {/* Bottom note */}
         <p className="mt-10 text-center font-serif text-sm italic text-stone-600">
-          "Every great story begins with a single thought."
+          "Every great story begins with a single thought. "
         </p>
       </div>
     </section>
