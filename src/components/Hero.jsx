@@ -344,6 +344,7 @@ function Hero() {
           </motion.div>
         </div>
 
+
         {/* Story zone selection */}
         <section id="zones" className="border-t border-amber-500/20 pt-12">
           <motion.div
