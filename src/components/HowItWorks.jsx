@@ -1,3 +1,10 @@
+
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const steps = [
   {
     number: "01",
@@ -30,35 +37,133 @@ const steps = [
 ];
 
 function HowItWorks() {
+  const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Section heading reveal
+      gsap.from("[data-process-heading]", {
+        y: 45,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      // Timeline connecting lines
+      gsap.utils.toArray("[data-timeline-line]").forEach((line) => {
+        gsap.from(line, {
+          scaleY: 0,
+          transformOrigin: "top center",
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: line,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      });
+
+      // Timeline icons
+      gsap.utils.toArray("[data-step-icon]").forEach((icon) => {
+        gsap.from(icon, {
+          scale: 0.5,
+          opacity: 0,
+          rotate: -25,
+          duration: 0.7,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: icon,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      });
+
+      // Manuscript pages - sequential scroll reveal
+      gsap.utils.toArray("[data-manuscript]").forEach((page, index) => {
+        gsap.from(page, {
+          y: 75,
+          opacity: 0,
+          rotateX: 12,
+          scale: 0.94,
+          duration: 1,
+          delay: index * 0.08,
+          ease: "power3.out",
+          transformOrigin: "center bottom",
+          scrollTrigger: {
+            trigger: page,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      });
+
+      // CTA reveal
+      gsap.from("[data-process-cta]", {
+        y: 35,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-process-cta]",
+          start: "top 90%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="how-it-works"
+      ref={sectionRef}
       className="relative overflow-hidden border-y border-white/10 bg-[#09090d] px-5 py-24 text-[#eee8dc] md:px-10"
     >
       {/* Background Glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-amber-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-amber-600/10" />
 
       <div className="relative mx-auto max-w-6xl">
         {/* Section Heading */}
         <div className="mx-auto mb-20 max-w-2xl text-center">
-          <div className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
+          <div
+            data-process-heading
+            className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300"
+          >
             THE CREATION PROCESS
           </div>
 
-          <h2 className="font-serif text-4xl font-bold leading-tight md:text-6xl">
+          <h2
+            data-process-heading
+            className="font-serif text-4xl font-bold leading-tight md:text-6xl"
+          >
             How the magic
             <span className="block font-normal italic text-amber-400">
               happens.
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-8 text-[#eee8dc]/50 md:text-base">
+          <p
+            data-process-heading
+            className="mx-auto mt-6 max-w-xl text-sm leading-8 text-[#eee8dc]/50 md:text-base"
+          >
             Every great story begins with an idea. Discover how KahanAI
             transforms your imagination into an unforgettable storytelling
             experience.
           </p>
 
-          <div className="divider mx-auto mt-8 max-w-xs before:bg-amber-400/20 after:bg-amber-400/20">
+          <div
+            data-process-heading
+            className="divider mx-auto mt-8 max-w-xs before:bg-amber-400/20 after:bg-amber-400/20"
+          >
             <span className="text-amber-400">✦</span>
           </div>
         </div>
@@ -67,18 +172,26 @@ function HowItWorks() {
         <ul className="timeline timeline-snap-icon timeline-vertical max-md:timeline-compact">
           {steps.map((step, index) => (
             <li key={step.number}>
-              {index !== 0 && <hr className="bg-amber-400/30" />}
+              {index !== 0 && (
+                <hr
+                  data-timeline-line
+                  className="bg-amber-400/30"
+                />
+              )}
 
               {/* Timeline Icon */}
               <div className="timeline-middle">
-                <div className="avatar placeholder">
+                <div
+                  data-step-icon
+                  className="avatar placeholder"
+                >
                   <div className="w-14 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 shadow-[0_0_25px_rgba(251,191,36,0.08)]">
                     <span className="text-2xl">{step.icon}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Compact Manuscript Page */}
+              {/* Manuscript Page */}
               <div
                 className={`mb-10 ${
                   index % 2 === 0
@@ -86,12 +199,15 @@ function HowItWorks() {
                     : "timeline-end"
                 }`}
               >
-                <div className="group relative mx-1">
+                <div
+                  data-manuscript
+                  className="group relative mx-1 [perspective:1000px]"
+                >
                   {/* Slightly Offset Paper Layers */}
                   <div className="absolute inset-0 translate-x-1.5 translate-y-1 rotate-[1.5deg] border border-[#b99b70]/30 bg-[#b99b70]" />
 
                   {/* Main Page */}
-                  <div className="relative overflow-hidden border border-[#b99b70]/60 bg-gradient-to-br from-[#e8d6b3] via-[#ddc69e] to-[#cbb18a] text-[#493522] shadow-[0_8px_25px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:-translate-y-1">
+                  <div className="relative overflow-hidden border border-[#b99b70]/60 bg-gradient-to-br from-[#e8d6b3] via-[#ddc69e] to-[#cbb18a] text-[#493522] shadow-[0_8px_25px_rgba(0,0,0,0.3)] transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="absolute inset-[6px] border border-[#795d3b]/25" />
 
                     <div className="relative p-5 md:p-6">
@@ -100,6 +216,7 @@ function HowItWorks() {
                         <span className="font-mono text-[8px] tracking-[0.25em] text-[#755a3c]/65">
                           KAHANAI / {step.number}
                         </span>
+
                         <span className="font-serif text-lg text-[#795d3b]">
                           {step.icon}
                         </span>
@@ -112,7 +229,9 @@ function HowItWorks() {
 
                       {/* Ornament */}
                       <div className="my-3 flex items-center gap-2">
-                        <span className="text-[10px] text-[#8a6842]">✦</span>
+                        <span className="text-[10px] text-[#8a6842]">
+                          ✦
+                        </span>
                         <div className="h-px w-8 bg-[#806344]/40" />
                       </div>
 
@@ -126,6 +245,7 @@ function HowItWorks() {
                         <span className="font-mono text-[7px] tracking-[0.2em] text-[#765a3b]/60">
                           ANCIENT CHRONICLES
                         </span>
+
                         <span className="font-serif text-xs italic text-[#765a3b]/60">
                           ✧ {step.number}
                         </span>
@@ -138,17 +258,24 @@ function HowItWorks() {
                 </div>
               </div>
 
-              {index !== steps.length - 1 && <hr className="bg-amber-400/30" />}
+              {index !== steps.length - 1 && (
+                <hr
+                  data-timeline-line
+                  className="bg-amber-400/30"
+                />
+              )}
             </li>
           ))}
         </ul>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
+        <div
+          data-process-cta
+          className="mt-16 text-center"
+        >
           <p className="mb-6 font-serif text-xl italic text-[#eee8dc]/50">
             Your next great story is waiting.
           </p>
-          
 
           <a
             href="#create"
