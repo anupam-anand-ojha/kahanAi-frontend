@@ -109,30 +109,7 @@ function About() {
                   </div>
                 </div>
 
-                {/* Written paragraphs */}
-                <div className="font-serif text-[12px] leading-[1.8] text-[#493a29]/90 md:text-[13px]">
-                  <p className="first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:text-5xl first-letter:leading-[0.8] first-letter:text-[#956e39]">
-                    Every great story begins with a thought... a small spark
-                    hidden somewhere in the depths of imagination. A world
-                    waiting to be discovered, characters waiting to be born, and
-                    adventures waiting to unfold.
-                  </p>
-
-                  <p className="mt-3">
-                    Within these pages, there are no boundaries. You may wander
-                    through forgotten kingdoms, uncover ancient mysteries,
-                    explore distant galaxies, or create a world that has never
-                    existed before.
-                  </p>
-
-                  <p className="mt-3">
-                    And the most beautiful part? You are not merely reading the
-                    story. You are the one who writes it. Every choice, every
-                    idea, every little detail becomes a part of your own
-                    universe.
-                  </p>
-                </div>
-
+           
                 {/* Quote */}
                 <div className="my-4 border-y border-[#9b794d]/40 py-3 text-center">
                   <p className="font-serif text-lg italic leading-relaxed text-[#956e39] md:text-xl">
