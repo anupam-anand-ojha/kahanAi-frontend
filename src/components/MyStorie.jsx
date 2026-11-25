@@ -64,8 +64,6 @@ function MyStorie() {
         },
       });
 
-     ;
-
       // Archive notice
       gsap.from("[data-archive-notice]", {
         y: 45,
