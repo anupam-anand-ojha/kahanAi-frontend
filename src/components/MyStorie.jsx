@@ -1,3 +1,10 @@
+
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const stories = [
   {
     id: "01",
@@ -26,36 +33,127 @@ const stories = [
 ];
 
 function MyStorie() {
+  const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Section heading
+      gsap.from("[data-library-heading]", {
+        y: 45,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-library-heading]",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // New story button
+      gsap.from("[data-library-button]", {
+        x: 35,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-library-button]",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+     ;
+
+      // Archive notice
+      gsap.from("[data-archive-notice]", {
+        y: 45,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-archive-notice]",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+      // Bottom quote
+      gsap.from("[data-library-footer]", {
+        y: 35,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-library-footer]",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+      // Ambient glow
+      gsap.from("[data-library-glow]", {
+        opacity: 0,
+        scale: 0.6,
+        duration: 1.5,
+        stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="library"
       className="relative overflow-hidden border-y border-white/10 bg-[#09090d] px-5 py-24 text-[#eee8dc] md:px-10"
     >
       {/* Background Glow */}
-      <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-amber-600/10 blur-[130px]" />
+      <div
+        data-library-glow
+        className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-amber-600/10 blur-[130px]"
+      />
 
       <div className="relative mx-auto max-w-6xl">
         {/* Section Heading */}
         <div className="mb-14 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
           <div>
-            <div className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300">
+            <div
+              data-library-heading
+              className="badge badge-outline mb-6 border-amber-400/40 px-4 py-4 tracking-[0.3em] text-amber-300"
+            >
               YOUR PERSONAL ARCHIVE
             </div>
 
-            <h2 className="font-serif text-4xl font-bold tracking-tight md:text-6xl">
+            <h2
+              data-library-heading
+              className="font-serif text-4xl font-bold tracking-tight md:text-6xl"
+            >
               The story
               <span className="block font-normal italic text-amber-400">
                 vault.
               </span>
             </h2>
 
-            <p className="mt-5 max-w-lg text-sm leading-8 text-[#eee8dc]/50 md:text-base">
+            <p
+              data-library-heading
+              className="mt-5 max-w-lg text-sm leading-8 text-[#eee8dc]/50 md:text-base"
+            >
               Every world you imagine leaves a trace. Discover your creations
               and revisit the stories that deserve to be remembered.
             </p>
           </div>
 
           <a
+            data-library-button
             href="#create"
             className="btn h-12 border-amber-400 bg-amber-400 px-6 text-black hover:border-amber-300 hover:bg-amber-300"
           >
@@ -66,11 +164,16 @@ function MyStorie() {
         </div>
 
         {/* Story Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          data-story-grid
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {stories.map((story) => (
             <article
               key={story.id}
+              data-story-card
               className="card group overflow-hidden border border-white/10 bg-[#111016] transition-all duration-500 hover:-translate-y-2 hover:border-amber-400/40 hover:shadow-[0_20px_60px_rgba(180,120,35,0.08)]"
+              style={{ transformPerspective: "1000px" }}
             >
               <div className="card-body gap-5 p-6 md:p-7">
                 {/* Card Header */}
@@ -85,7 +188,10 @@ function MyStorie() {
                 </div>
 
                 {/* Premium Ancient Pages Bundle */}
-                <div className="group/pages relative flex h-60 items-center justify-center overflow-hidden rounded-box border border-amber-200/10 bg-[radial-gradient(ellipse_at_center,_#38271f_0%,_#171218_55%,_#09090d_100%)]">
+                <div
+                  data-story-pages
+                  className="group/pages relative flex h-60 items-center justify-center overflow-hidden rounded-box border border-amber-200/10 bg-[radial-gradient(ellipse_at_center,_#38271f_0%,_#171218_55%,_#09090d_100%)]"
+                >
                   {/* Ambient Glow */}
                   <div className="absolute h-44 w-44 rounded-full bg-amber-500/10 blur-[70px] transition-all duration-700 group-hover/pages:bg-amber-400/20" />
 
@@ -101,7 +207,6 @@ function MyStorie() {
                       <div className="h-px w-full bg-[#493522]" />
                     </div>
                   </div>
-                  
 
                   {/* Second Page */}
                   <div className="absolute h-48 w-36 -translate-x-7 rotate-[-12deg] border border-[#d2b58a]/50 bg-[#d0b58d] shadow-2xl transition-all duration-700 group-hover/pages:-translate-x-12 group-hover/pages:rotate-[-17deg]">
@@ -171,8 +276,9 @@ function MyStorie() {
 
                 {/* Card Footer */}
                 <div className="card-actions mt-auto items-center justify-between border-t border-white/10 pt-5">
-                 
-                  
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/50">
+                    STORY CONCEPT
+                  </span>
 
                   <button
                     type="button"
@@ -183,7 +289,7 @@ function MyStorie() {
                       })
                     }
                   >
-                    Create Similar stories <span>↗</span>
+                    Create Similar <span>↗</span>
                   </button>
                 </div>
               </div>
@@ -192,7 +298,10 @@ function MyStorie() {
         </div>
 
         {/* Archive Notice */}
-        <div className="alert mt-10 border border-amber-400/15 bg-[#111016] text-[#eee8dc]">
+        <div
+          data-archive-notice
+          className="alert mt-10 border border-amber-400/15 bg-[#111016] text-[#eee8dc]"
+        >
           <span className="text-2xl text-amber-400">✦</span>
 
           <div>
@@ -208,7 +317,7 @@ function MyStorie() {
         </div>
 
         {/* Bottom Decoration */}
-        <div className="mt-14 text-center">
+        <div data-library-footer className="mt-14 text-center">
           <p className="font-serif text-xl italic text-[#eee8dc]/40">
             Some stories are too special to be forgotten.
           </p>
