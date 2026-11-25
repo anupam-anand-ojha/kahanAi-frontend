@@ -41,7 +41,7 @@ function MyStorie() {
       gsap.from("[data-library-heading]", {
         y: 45,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.10,
         stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
