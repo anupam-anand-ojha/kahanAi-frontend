@@ -171,9 +171,7 @@ function MyStorie() {
 
                 {/* Card Footer */}
                 <div className="card-actions mt-auto items-center justify-between border-t border-white/10 pt-5">
-                  <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400/50">
-                    STORY CONCEPT
-                  </span>
+                 
                   
 
                   <button
@@ -185,7 +183,7 @@ function MyStorie() {
                       })
                     }
                   >
-                    Create Similar <span>↗</span>
+                    Create Similar stories <span>↗</span>
                   </button>
                 </div>
               </div>
