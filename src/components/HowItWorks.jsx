@@ -244,6 +244,7 @@ function HowItWorks() {
                       <div className="mt-5 flex items-center justify-between border-t border-[#806344]/25 pt-3">
                         <span className="font-mono text-[7px] tracking-[0.2em] text-[#765a3b]/60">
                           ANCIENT CHRONICLES
+                          
                         </span>
 
                         <span className="font-serif text-xs italic text-[#765a3b]/60">
