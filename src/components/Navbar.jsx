@@ -80,7 +80,7 @@ function Navbar() {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation  */}
           <div className="navbar-center relative z-10 hidden md:flex">
             <ul className="menu menu-horizontal items-center gap-1 px-1 text-sm font-semibold">
               {[
@@ -118,7 +118,7 @@ function Navbar() {
               <span>↗</span>
             </a>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu  */}
             <div className="dropdown dropdown-end md:hidden">
               <button
                 tabIndex={0}
@@ -148,11 +148,11 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Engraved corner details */}
+          {/* Engraved corner details  */}
           <div className="pointer-events-none absolute left-1 top-1 h-4 w-4 border-l border-t border-[#9b753e]/70" />
           <div className="pointer-events-none absolute bottom-1 right-1 h-4 w-4 border-b border-r border-[#9b753e]/70" />
 
-          {/* Subtle center ornament */}
+          {/* Subtle center ornament  */}
           <div className="pointer-events-none absolute bottom-1 left-1/2 hidden -translate-x-1/2 text-[8px] tracking-[0.5em] text-[#93651f]/50 md:block">
             ✦ ───── ✦ ───── ✦
           </div>
