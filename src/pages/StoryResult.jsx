@@ -26,7 +26,7 @@ function StoryResult() {
           onClick={() => navigate("/")}
           className="btn mt-8 rounded-none border-amber-400/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20"
         >
-          Back to KahanAI
+         ← Back to KahanAI
         </button>
       </main>
     );
