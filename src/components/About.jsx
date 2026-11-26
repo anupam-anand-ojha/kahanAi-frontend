@@ -157,7 +157,7 @@ function About() {
           <div className="relative mx-auto w-full max-w-md px-0 py-0">
             {/* Framer Motion floating wrapper */}
             <motion.div
-              animate={{ y: [0, -7, 0] }}
+              animate={{ y: [0, -20, 0] , x: [0, -20, 0]}}
               transition={{
                 duration: 3,
                 repeat: Infinity,
