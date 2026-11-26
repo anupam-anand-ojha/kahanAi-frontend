@@ -314,7 +314,7 @@ function MyStorie() {
           </div>
         </div>
 
-        {/* Bottom Decoration */}
+        {/* Bottom Decoration  */}
         <div data-library-footer className="mt-14 text-center">
           <p className="font-serif text-xl italic text-[#eee8dc]/40">
             Some stories are too special to be forgotten.
