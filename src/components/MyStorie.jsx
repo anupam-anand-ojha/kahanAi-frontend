@@ -295,7 +295,7 @@ function MyStorie() {
           ))}
         </div>
 
-        {/* Archive Notice */}
+        {/* Archive Notice  */}
         <div
           data-archive-notice
           className="alert mt-10 border border-amber-400/15 bg-[#111016] text-[#eee8dc]"
