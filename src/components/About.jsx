@@ -155,7 +155,7 @@ function About() {
 
           {/* Ancient Storybook Page */}
           <div className="relative mx-auto w-full max-w-md px-0 py-0">
-            {/* Framer Motion floating wrapper */}
+            {/* Framer Motion floating wrapper to float the page on x and y axis */}
             <motion.div
               animate={{ y: [0, -20, 0] , x: [0, -20, 0]}}
               transition={{
