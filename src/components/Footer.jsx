@@ -74,7 +74,6 @@ function Footer() {
             </ul>
           </div>
 
-
           {/* Discover Links */}
           <div>
             <h3 className="mb-6 font-mono text-xs tracking-[0.25em] text-amber-400">
