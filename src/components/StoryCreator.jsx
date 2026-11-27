@@ -192,7 +192,7 @@ function StoryCreator() {
                   </span>
 
                   <div className="relative flex h-full flex-col items-center justify-between px-7 py-9 text-center">
-                    {/* Edition */}
+                    {/* Edition  */}
                     <div>
                       <p className="text-[8px] tracking-[0.48em] text-[#e1c28e]">
                         THE FIRST EDITION
@@ -237,7 +237,7 @@ function StoryCreator() {
                       </p>
                     </div>
 
-                    {/* Publisher details */}
+                    {/*  Publisher details  */}
                     <div className="w-full">
                       <p className="text-[8px] tracking-[0.35em] text-[#cba66d]">
                         THE LANGUAGE OF THIS TALE
@@ -268,7 +268,7 @@ function StoryCreator() {
             </div>
           </motion.aside>
 
-          {/* RIGHT: Form */}
+          {/*  RIGHT: Form  */}
           <motion.form
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
