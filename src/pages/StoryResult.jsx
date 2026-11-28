@@ -7,6 +7,7 @@ function StoryResult() {
 
   const storyData = location.state?.story;
 
+  
   if (!storyData?.story) {
     return (
       <main className="min-h-screen bg-[#09090d] px-6 py-24 text-center text-[#eee8dc]">
