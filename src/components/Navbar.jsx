@@ -1,43 +1,76 @@
+import { motion, useReducedMotion } from "framer-motion";
+
+const edge =
+  "repeating-linear-gradient(0deg, rgba(120,90,50,.06) 0, rgba(120,90,50,.06) 1px, transparent 1px, transparent 3px)";
+
+const pages = [
+  { color: "#e4d3aa", y: 31, sx: 0.99, rot: -0.18, delay: 0.02 },
+  { color: "#f2e8cb", y: 23, sx: 0.9925, rot: 0.18, delay: 0.05 },
+  { color: "#e6d7b0", y: 15, sx: 0.995, rot: 0, delay: 0.08 },
+  { color: "#efe3c2", y: 7, sx: 0.9975, rot: -0.18, delay: 0.11 },
+];
+
+const pageVariants = {
+  rest: {
+    y: 0,
+    scaleX: 1,
+    rotate: 0,
+    transition: { type: "spring", stiffness: 420, damping: 34, mass: 0.6 },
+  },
+  hover: (p) => ({
+    y: p.y,
+    scaleX: p.sx,
+    rotate: p.rot,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 19, 
+      mass: 0.7,
+      delay: p.delay,
+    },
+  }),
+};
+
+const links = [
+  ["Home", "#home"],
+  ["Explore Zones", "#zones"],
+  ["About", "#about"],
+];
+
 function Navbar() {
-  const pages = [
-    {
-      color: "#a98d65",
-      hover: "group-hover:translate-y-4",
-    },
-    {
-      color: "#c3a77c",
-      hover: "group-hover:translate-y-3",
-    },
-    {
-      color: "#b79a6e",
-      hover: "group-hover:translate-y-2",
-    },
-    {
-      color: "#d1b990",
-      hover: "group-hover:translate-y-1",
-    },
-    {
-      color: "#c5aa7e",
-      hover: "",
-    },
-  ];
+  const reduce = useReducedMotion();
 
   return (
     <div className="sticky top-0 z-50 w-full">
-      <div className="group relative w-full">
-        {/* Premium layered manuscript bundle */}
-
-        {pages.map((page, index) => (
-          <div
-            key={index}
-            className={`pointer-events-none absolute inset-0 border border-[#80613b]/30 transition-[translate] duration-300 ease-out ${page.hover}`}
+      <motion.div
+        className="relative w-full"
+        initial="rest"
+        animate="rest"
+        whileHover={reduce ? "rest" : "hover"}
+      >
+        {/* Paperback pages */}
+        {pages.map((page, i) => (
+          <motion.div
+            key={i}
+            custom={page}
+            variants={pageVariants}
+            className="pointer-events-none absolute inset-0"
             style={{
               backgroundColor: page.color,
+              backgroundImage: edge,
+              borderLeft: "1px solid rgba(110,82,48,.4)",
+              borderRight: "1px solid rgba(110,82,48,.4)",
+              borderBottom: "1px solid rgba(96,68,36,.6)",
+              borderRadius: "0 0 55% 55% / 0 0 7px 7px",
+              boxShadow:
+                "0 1px 2px rgba(60,36,12,.3), inset 0 -2px 3px rgba(255,255,255,.35), inset 0 6px 8px -4px rgba(60,36,12,.3)",
+              transformOrigin: "top center",
+              willChange: "transform",
             }}
           />
         ))}
 
-        {/* Main premium parchment */}
+        {/* Main parchment  */}
         <div
           className="navbar relative z-10 min-h-16 w-full overflow-hidden border border-[#a88a59]/50 px-4 text-[#302417] shadow-md md:px-8"
           style={{
@@ -63,7 +96,7 @@ function Navbar() {
             }}
           />
 
-          {/* Gold engraved top and bottom lines */}
+          {/* Gold engraved lines */}
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#a77b36]/80 to-transparent" />
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#a77b36]/60 to-transparent" />
 
@@ -80,18 +113,14 @@ function Navbar() {
             </a>
           </div>
 
-          {/* Desktop Navigation  */}
+          {/* Desktop nav */}
           <div className="navbar-center relative z-10 hidden md:flex">
             <ul className="menu menu-horizontal items-center gap-1 px-1 text-sm font-semibold">
-              {[
-                ["Home", "#home"],
-                ["Explore Zones", "#zones"],
-                ["About", "#about"],
-              ].map(([label, href]) => (
+              {links.map(([label, href]) => (
                 <li key={label}>
                   <a
                     href={href}
-                    className="rounded-full px-4 text-[#59452d]/80 transition-all duration-300 hover:bg-[#93651f]/10 hover:text-[#704713]"
+                    className="rounded-full px-4 text-[#59452d]/80 transition-colors duration-200 hover:bg-[#93651f]/10 hover:text-[#704713]"
                   >
                     {label}
                   </a>
@@ -111,14 +140,14 @@ function Navbar() {
 
             <a
               href="#create"
-              className="btn btn-sm h-10 border-[#704713] bg-[#704713] px-4 font-semibold text-[#f5e8ca] shadow-[0_3px_12px_rgba(75,45,15,0.25)] transition-all duration-300 hover:border-[#56350e] hover:bg-[#56350e] hover:shadow-[0_4px_18px_rgba(75,45,15,0.4)]"
+              className="btn btn-sm h-10 border-[#704713] bg-[#704713] px-4 font-semibold text-[#f5e8ca] shadow-[0_3px_12px_rgba(75,45,15,0.25)] transition-colors duration-200 hover:border-[#56350e] hover:bg-[#56350e]"
             >
               <span>✦</span>
               Create Story
               <span>↗</span>
             </a>
 
-            {/* Mobile Menu  */}
+            {/* Mobile menu */}
             <div className="dropdown dropdown-end md:hidden">
               <button
                 tabIndex={0}
@@ -132,32 +161,25 @@ function Navbar() {
                 tabIndex={0}
                 className="menu dropdown-content z-50 mt-3 w-52 rounded-sm border border-[#a88a59] bg-[#e8d7b3] p-3 text-[#302417] shadow-2xl"
               >
-                <li>
-                  <a href="#home">Home</a>
-                </li>
-                <li>
-                  <a href="#zones">Explore Zones</a>
-                </li>
-                <li>
-                  <a href="#about">About</a>
-                </li>
-                <li>
-                  <a href="#library">My Stories</a>
-                </li>
+                {[...links, ["My Stories", "#library"]].map(([label, href]) => (
+                  <li key={label}>
+                    <a href={href}>{label}</a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
-          {/* Engraved corner details  */}
+          {/* Corner details */}
           <div className="pointer-events-none absolute left-1 top-1 h-4 w-4 border-l border-t border-[#9b753e]/70" />
           <div className="pointer-events-none absolute bottom-1 right-1 h-4 w-4 border-b border-r border-[#9b753e]/70" />
 
-          {/* Subtle center ornament  */}
+          {/* Center ornament */}
           <div className="pointer-events-none absolute bottom-1 left-1/2 hidden -translate-x-1/2 text-[8px] tracking-[0.5em] text-[#93651f]/50 md:block">
             ✦ ───── ✦ ───── ✦
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
