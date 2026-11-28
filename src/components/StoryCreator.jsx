@@ -27,7 +27,7 @@ const H = 362;
 const T = 44;
 
 // Seconds per full turn
-const SPIN_DURATION = 24;
+const SPIN_DURATION = 16;
 
 // Page edge textures
 const pagesSide =
